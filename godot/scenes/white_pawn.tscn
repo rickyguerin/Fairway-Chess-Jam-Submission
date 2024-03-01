@@ -1,0 +1,5 @@
+[gd_scene load_steps=2 format=3 uid="uid://bf4gt7j0jtab3"]
+
+[ext_resource type="PackedScene" uid="uid://de0mk7suefx45" path="res://assets/pieces/white_pawn.glb" id="1_b4ctv"]
+
+[node name="white_pawn" instance=ExtResource("1_b4ctv")]

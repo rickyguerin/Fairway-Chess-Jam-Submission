@@ -1,0 +1,32 @@
+[gd_scene load_steps=5 format=3 uid="uid://4yetqslefb6c"]
+
+[ext_resource type="PackedScene" uid="uid://dtypjdtnjwcx4" path="res://scenes/board.tscn" id="1_v7mcm"]
+
+[sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_hvp6o"]
+sky_horizon_color = Color(0.64625, 0.65575, 0.67075, 1)
+ground_horizon_color = Color(0.64625, 0.65575, 0.67075, 1)
+
+[sub_resource type="Sky" id="Sky_c5tnl"]
+sky_material = SubResource("ProceduralSkyMaterial_hvp6o")
+
+[sub_resource type="Environment" id="Environment_8k3b6"]
+background_mode = 2
+sky = SubResource("Sky_c5tnl")
+ambient_light_source = 2
+ambient_light_color = Color(0.784314, 0.784314, 0.784314, 1)
+tonemap_mode = 2
+glow_enabled = true
+
+[node name="World" type="Node"]
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
+transform = Transform3D(-0.866025, -0.433013, 0.25, 0, 0.5, 0.866025, -0.5, 0.75, -0.433013, 0, 7.89174, 0)
+sky_mode = 2
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="."]
+environment = SubResource("Environment_8k3b6")
+
+[node name="board" parent="." instance=ExtResource("1_v7mcm")]
+
+[node name="Camera3D" type="Camera3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 0.431456, 0.902134, 0, -0.902134, 0.431456, 0, 10.4162, 7.78469)

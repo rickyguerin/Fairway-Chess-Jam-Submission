@@ -1,0 +1,9 @@
+[gd_scene load_steps=3 format=3 uid="uid://pc2x7rtcioio"]
+
+[ext_resource type="PackedScene" uid="uid://08mdm3wrk2th" path="res://assets/models/arrow.glb" id="1_153l6"]
+[ext_resource type="Material" uid="uid://ynos38m5j8hn" path="res://assets/materials/selected.tres" id="2_lm1c8"]
+
+[node name="arrow" instance=ExtResource("1_153l6")]
+
+[node name="Cube" parent="." index="0"]
+surface_material_override/0 = ExtResource("2_lm1c8")

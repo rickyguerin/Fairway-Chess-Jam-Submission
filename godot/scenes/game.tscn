@@ -1,8 +1,8 @@
 [gd_scene load_steps=6 format=3 uid="uid://4yetqslefb6c"]
 
 [ext_resource type="PackedScene" uid="uid://dmkvcps1nimot" path="res://scenes/board.tscn" id="1_v7mcm"]
-[ext_resource type="PackedScene" uid="uid://de0mk7suefx45" path="res://assets/pieces/white_pawn.glb" id="2_ih06c"]
-[ext_resource type="PackedScene" uid="uid://cq4b8f6g4ttwo" path="res://assets/pieces/black_pawn.glb" id="3_nnmnk"]
+[ext_resource type="PackedScene" uid="uid://bf4gt7j0jtab3" path="res://scenes/white_pawn.tscn" id="2_q8nit"]
+[ext_resource type="PackedScene" uid="uid://0ohvtdi5fq2g" path="res://scenes/black_pawn.tscn" id="3_ifol8"]
 [ext_resource type="PackedScene" uid="uid://vy7keink38n2" path="res://scenes/OrbitCamera.tscn" id="4_qw6ff"]
 
 [sub_resource type="Environment" id="Environment_8k3b6"]
@@ -26,54 +26,54 @@ environment = SubResource("Environment_8k3b6")
 
 [node name="White Pieces" type="Node" parent="."]
 
-[node name="pawn_1" parent="White Pieces" instance=ExtResource("2_ih06c")]
+[node name="pawn 1" parent="White Pieces" instance=ExtResource("2_q8nit")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -7, 0, 5)
 
-[node name="pawn_2" parent="White Pieces" instance=ExtResource("2_ih06c")]
+[node name="pawn 2" parent="White Pieces" instance=ExtResource("2_q8nit")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -5, 0, 5)
 
-[node name="pawn_3" parent="White Pieces" instance=ExtResource("2_ih06c")]
+[node name="pawn 3" parent="White Pieces" instance=ExtResource("2_q8nit")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3, 0, 5)
 
-[node name="pawn_4" parent="White Pieces" instance=ExtResource("2_ih06c")]
+[node name="pawn 4" parent="White Pieces" instance=ExtResource("2_q8nit")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1, 0, 5)
 
-[node name="pawn_5" parent="White Pieces" instance=ExtResource("2_ih06c")]
+[node name="pawn 5" parent="White Pieces" instance=ExtResource("2_q8nit")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1, 0, 5)
 
-[node name="pawn_6" parent="White Pieces" instance=ExtResource("2_ih06c")]
+[node name="pawn 6" parent="White Pieces" instance=ExtResource("2_q8nit")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3, 0, 5)
 
-[node name="pawn_7" parent="White Pieces" instance=ExtResource("2_ih06c")]
+[node name="pawn 7" parent="White Pieces" instance=ExtResource("2_q8nit")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 5, 0, 5)
 
-[node name="pawn_8" parent="White Pieces" instance=ExtResource("2_ih06c")]
+[node name="pawn 8" parent="White Pieces" instance=ExtResource("2_q8nit")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 7, 0, 5)
 
 [node name="Black Pieces" type="Node" parent="."]
 
-[node name="pawn_1" parent="Black Pieces" instance=ExtResource("3_nnmnk")]
+[node name="pawn 1" parent="Black Pieces" instance=ExtResource("3_ifol8")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -7, 0, -5)
 
-[node name="pawn_2" parent="Black Pieces" instance=ExtResource("3_nnmnk")]
+[node name="pawn 2" parent="Black Pieces" instance=ExtResource("3_ifol8")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -5, 0, -5)
 
-[node name="pawn_3" parent="Black Pieces" instance=ExtResource("3_nnmnk")]
+[node name="pawn 3" parent="Black Pieces" instance=ExtResource("3_ifol8")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3, 0, -5)
 
-[node name="pawn_4" parent="Black Pieces" instance=ExtResource("3_nnmnk")]
+[node name="pawn 4" parent="Black Pieces" instance=ExtResource("3_ifol8")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1, 0, -5)
 
-[node name="pawn_5" parent="Black Pieces" instance=ExtResource("3_nnmnk")]
+[node name="pawn 5" parent="Black Pieces" instance=ExtResource("3_ifol8")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1, 0, -5)
 
-[node name="pawn_6" parent="Black Pieces" instance=ExtResource("3_nnmnk")]
+[node name="pawn 6" parent="Black Pieces" instance=ExtResource("3_ifol8")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3, 0, -5)
 
-[node name="pawn_7" parent="Black Pieces" instance=ExtResource("3_nnmnk")]
+[node name="pawn 7" parent="Black Pieces" instance=ExtResource("3_ifol8")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 5, 0, -5)
 
-[node name="pawn_8" parent="Black Pieces" instance=ExtResource("3_nnmnk")]
+[node name="pawn 8" parent="Black Pieces" instance=ExtResource("3_ifol8")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 7, 0, -5)
 
 [node name="OrbitCamera" parent="." instance=ExtResource("4_qw6ff")]

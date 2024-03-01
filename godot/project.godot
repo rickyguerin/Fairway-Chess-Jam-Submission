@@ -14,7 +14,6 @@ config/name="Fairway Chess Jam Submission"
 run/main_scene="res://scenes/game.tscn"
 config/features=PackedStringArray("4.1", "Forward Plus")
 boot_splash/show_image=false
-config/icon="res://icon.svg"
 
 [display]
 

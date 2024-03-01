@@ -1,5 +1,6 @@
-[gd_scene load_steps=6 format=3 uid="uid://4yetqslefb6c"]
+[gd_scene load_steps=7 format=3 uid="uid://4yetqslefb6c"]
 
+[ext_resource type="Script" path="res://scenes/game.gd" id="1_1yvmv"]
 [ext_resource type="PackedScene" uid="uid://dmkvcps1nimot" path="res://scenes/board.tscn" id="1_v7mcm"]
 [ext_resource type="PackedScene" uid="uid://dgjvuampew38d" path="res://scenes/white_pawn.tscn" id="2_q8nit"]
 [ext_resource type="PackedScene" uid="uid://0ohvtdi5fq2g" path="res://scenes/black_pawn.tscn" id="3_ifol8"]
@@ -14,6 +15,7 @@ tonemap_mode = 2
 glow_enabled = true
 
 [node name="World" type="Node"]
+script = ExtResource("1_1yvmv")
 
 [node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 0.866025, 0.5, 0, -0.5, 0.866025, 0, 7.89174, 0)

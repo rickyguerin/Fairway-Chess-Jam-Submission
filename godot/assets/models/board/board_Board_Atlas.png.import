@@ -3,7 +3,7 @@
 importer="texture"
 type="CompressedTexture2D"
 uid="uid://ccj4c15jerbh3"
-path.s3tc="res://.godot/imported/board_Board_Atlas.png-a58c6a5c653cae04928a6857b9f97a08.s3tc.ctex"
+path.s3tc="res://.godot/imported/board_Board_Atlas.png-d7a360651181023064e9087152c32112.s3tc.ctex"
 metadata={
 "imported_formats": ["s3tc_bptc"],
 "vram_texture": true
@@ -12,8 +12,8 @@ generator_parameters={}
 
 [deps]
 
-source_file="res://assets/board/board_Board_Atlas.png"
-dest_files=["res://.godot/imported/board_Board_Atlas.png-a58c6a5c653cae04928a6857b9f97a08.s3tc.ctex"]
+source_file="res://assets/models/board/board_Board_Atlas.png"
+dest_files=["res://.godot/imported/board_Board_Atlas.png-d7a360651181023064e9087152c32112.s3tc.ctex"]
 
 [params]
 

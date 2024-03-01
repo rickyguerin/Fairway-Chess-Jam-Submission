@@ -1,7 +1,7 @@
-[gd_scene load_steps=3 format=3 uid="uid://bf4gt7j0jtab3"]
+[gd_scene load_steps=3 format=3 uid="uid://dgjvuampew38d"]
 
-[ext_resource type="PackedScene" uid="uid://de0mk7suefx45" path="res://assets/pieces/white_pawn.glb" id="1_b4ctv"]
+[ext_resource type="PackedScene" uid="uid://de0mk7suefx45" path="res://assets/models/pieces/white_pawn.glb" id="1_nvo4w"]
 [ext_resource type="Script" path="res://scenes/PlayerPiece.gd" id="2_hvaa5"]
 
-[node name="white_pawn" instance=ExtResource("1_b4ctv")]
+[node name="white_pawn" instance=ExtResource("1_nvo4w")]
 script = ExtResource("2_hvaa5")

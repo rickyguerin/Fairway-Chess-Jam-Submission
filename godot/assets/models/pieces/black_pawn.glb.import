@@ -4,12 +4,12 @@ importer="scene"
 importer_version=1
 type="PackedScene"
 uid="uid://cq4b8f6g4ttwo"
-path="res://.godot/imported/black_pawn.glb-30400ea60f3648859190c37e0edd0a69.scn"
+path="res://.godot/imported/black_pawn.glb-dd7cc3e2077f3925f91d6ea14e79924d.scn"
 
 [deps]
 
-source_file="res://assets/pieces/black_pawn.glb"
-dest_files=["res://.godot/imported/black_pawn.glb-30400ea60f3648859190c37e0edd0a69.scn"]
+source_file="res://assets/models/pieces/black_pawn.glb"
+dest_files=["res://.godot/imported/black_pawn.glb-dd7cc3e2077f3925f91d6ea14e79924d.scn"]
 
 [params]
 

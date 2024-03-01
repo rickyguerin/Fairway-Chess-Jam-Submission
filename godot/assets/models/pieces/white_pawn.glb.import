@@ -4,12 +4,12 @@ importer="scene"
 importer_version=1
 type="PackedScene"
 uid="uid://de0mk7suefx45"
-path="res://.godot/imported/white_pawn.glb-9732a762d9f99f32a165e3c2d493d05a.scn"
+path="res://.godot/imported/white_pawn.glb-1f07493f41af75eeb3ccb7f46fd308ed.scn"
 
 [deps]
 
-source_file="res://assets/pieces/white_pawn.glb"
-dest_files=["res://.godot/imported/white_pawn.glb-9732a762d9f99f32a165e3c2d493d05a.scn"]
+source_file="res://assets/models/pieces/white_pawn.glb"
+dest_files=["res://.godot/imported/white_pawn.glb-1f07493f41af75eeb3ccb7f46fd308ed.scn"]
 
 [params]
 

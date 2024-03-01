@@ -1,19 +1,12 @@
-[gd_scene load_steps=7 format=3 uid="uid://4yetqslefb6c"]
+[gd_scene load_steps=5 format=3 uid="uid://4yetqslefb6c"]
 
-[ext_resource type="PackedScene" uid="uid://dtypjdtnjwcx4" path="res://scenes/board.tscn" id="1_v7mcm"]
+[ext_resource type="PackedScene" uid="uid://dmkvcps1nimot" path="res://scenes/board.tscn" id="1_v7mcm"]
 [ext_resource type="PackedScene" uid="uid://de0mk7suefx45" path="res://assets/pieces/white_pawn.glb" id="2_ih06c"]
 [ext_resource type="PackedScene" uid="uid://cq4b8f6g4ttwo" path="res://assets/pieces/black_pawn.glb" id="3_nnmnk"]
 
-[sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_hvp6o"]
-sky_horizon_color = Color(0.64625, 0.65575, 0.67075, 1)
-ground_horizon_color = Color(0.64625, 0.65575, 0.67075, 1)
-
-[sub_resource type="Sky" id="Sky_c5tnl"]
-sky_material = SubResource("ProceduralSkyMaterial_hvp6o")
-
 [sub_resource type="Environment" id="Environment_8k3b6"]
-background_mode = 2
-sky = SubResource("Sky_c5tnl")
+background_mode = 1
+background_color = Color(0.352941, 0.647059, 1, 1)
 ambient_light_source = 2
 ambient_light_color = Color(0.784314, 0.784314, 0.784314, 1)
 tonemap_mode = 2

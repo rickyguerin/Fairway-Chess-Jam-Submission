@@ -1,5 +1,5 @@
-[gd_scene load_steps=2 format=3 uid="uid://dtypjdtnjwcx4"]
+[gd_scene load_steps=2 format=3 uid="uid://dmkvcps1nimot"]
 
-[ext_resource type="PackedScene" uid="uid://1iq3ibkhxo73" path="res://assets/board/board.glb" id="1_dmuwp"]
+[ext_resource type="PackedScene" uid="uid://5t5j840o67o0" path="res://assets/board/board.glb" id="1_djs6u"]
 
-[node name="board" instance=ExtResource("1_dmuwp")]
+[node name="board" instance=ExtResource("1_djs6u")]

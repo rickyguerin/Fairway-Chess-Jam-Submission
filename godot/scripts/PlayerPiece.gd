@@ -6,6 +6,8 @@ signal clicked(node)
 const SELECTED_MATERIAL := preload("res://assets/materials/selected.tres")
 const ARROW_SCENE := preload("res://scenes/arrow.tscn")
 
+const MIN_ROTATION := -PI/4
+const MAX_ROTATION := PI/4
 @onready var rigid_body := $"pawn-rigid"
 @onready var mesh_instance := $"pawn-rigid/pawn-rigid"
 @onready var arrow := $"pawn-rigid/arrow"
@@ -27,6 +29,8 @@ func _physics_process(delta):
 
 	elif Input.is_action_pressed("D"):
 		rigid_body.rotate_y(-0.05)
+
+	rigid_body.rotation.y = clamp(rigid_body.rotation.y, MIN_ROTATION, MAX_ROTATION)
 
 
 func _unhandled_input(event):

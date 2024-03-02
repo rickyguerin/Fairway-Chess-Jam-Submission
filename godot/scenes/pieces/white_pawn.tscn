@@ -7,6 +7,11 @@
 [node name="white_pawn" instance=ExtResource("1_lo6d0")]
 script = ExtResource("2_a78uk")
 
+[node name="pawn-rigid" parent="." index="0"]
+axis_lock_angular_x = true
+axis_lock_angular_y = true
+axis_lock_angular_z = true
+
 [node name="arrow" parent="." index="1" instance=ExtResource("3_nffe1")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, -1)
 visible = false

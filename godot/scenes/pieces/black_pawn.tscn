@@ -3,3 +3,8 @@
 [ext_resource type="PackedScene" uid="uid://scwx4gj2bqpy" path="res://assets/models/pieces/black_pawn.glb" id="1_2so2a"]
 
 [node name="black_pawn" instance=ExtResource("1_2so2a")]
+
+[node name="pawn-rigid" parent="." index="0"]
+axis_lock_angular_x = true
+axis_lock_angular_y = true
+axis_lock_angular_z = true

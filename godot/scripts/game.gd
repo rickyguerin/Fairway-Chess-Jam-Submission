@@ -11,6 +11,8 @@ func _unselect_all():
 	for child in $"White Pieces".get_children():
 		(child as PlayerPiece).unselect()
 
+	selected_piece = null
+
 
 func _select_piece(node):
 	if node is PlayerPiece and node != selected_piece:

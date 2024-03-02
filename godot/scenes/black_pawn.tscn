@@ -1,5 +1,0 @@
-[gd_scene load_steps=2 format=3 uid="uid://0ohvtdi5fq2g"]
-
-[ext_resource type="PackedScene" uid="uid://cq4b8f6g4ttwo" path="res://assets/models/pieces/black_pawn.glb" id="1_2so2a"]
-
-[node name="black_pawn" instance=ExtResource("1_2so2a")]

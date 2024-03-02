@@ -1,0 +1,12 @@
+[gd_scene load_steps=4 format=3 uid="uid://dev6y8lw81op1"]
+
+[ext_resource type="PackedScene" uid="uid://b0um2tkq5ua5u" path="res://assets/models/pieces/white_pawn.glb" id="1_lo6d0"]
+[ext_resource type="Script" path="res://scripts/PlayerPiece.gd" id="2_a78uk"]
+[ext_resource type="PackedScene" uid="uid://pc2x7rtcioio" path="res://scenes/arrow.tscn" id="3_nffe1"]
+
+[node name="white_pawn" instance=ExtResource("1_lo6d0")]
+script = ExtResource("2_a78uk")
+
+[node name="arrow" parent="." index="1" instance=ExtResource("3_nffe1")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, -1)
+visible = false

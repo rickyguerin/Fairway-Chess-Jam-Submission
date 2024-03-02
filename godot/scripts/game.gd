@@ -13,6 +13,7 @@ func _unselect_all():
 
 
 func _select_piece(node):
-	_unselect_all()
-	if node is PlayerPiece:
+	if node is PlayerPiece and node != selected_piece:
+		_unselect_all()
 		node.select()
+		selected_piece = node

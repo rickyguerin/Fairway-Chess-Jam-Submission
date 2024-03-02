@@ -47,7 +47,7 @@ func select():
 
 
 func unselect():
-	rotation = Vector3()
+	rigid_body.rotation = Vector3()
 	mesh_instance.set_surface_override_material(0, null)
 	arrow.visible = false
 	is_selected = false

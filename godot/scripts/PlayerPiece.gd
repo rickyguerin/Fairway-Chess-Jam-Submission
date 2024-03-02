@@ -8,6 +8,9 @@ const ARROW_SCENE := preload("res://scenes/arrow.tscn")
 
 const MIN_ROTATION := -PI/4
 const MAX_ROTATION := PI/4
+
+const MAX_IMPULSE := 7
+
 @onready var rigid_body := $"pawn-rigid"
 @onready var mesh_instance := $"pawn-rigid/pawn-rigid"
 @onready var arrow := $"pawn-rigid/arrow"
@@ -21,7 +24,7 @@ func _ready():
 
 
 func _physics_process(delta):
-	if not is_selected:
+	if not is_selected or rigid_body.linear_velocity.length() > 0:
 		return
 
 	if Input.is_action_pressed("A"):
@@ -37,6 +40,10 @@ func _unhandled_input(event):
 	if mouse_is_hovering and event is InputEventMouseButton:
 		if event.button_index == MOUSE_BUTTON_LEFT and event.is_pressed():
 			clicked.emit(self)
+			
+	if is_selected and Input.is_action_just_pressed("Space") and rigid_body.linear_velocity.length() == 0:
+		var d = (rigid_body.transform.basis * Vector3.FORWARD).normalized()
+		rigid_body.apply_impulse(d * MAX_IMPULSE)
 
 
 func select():

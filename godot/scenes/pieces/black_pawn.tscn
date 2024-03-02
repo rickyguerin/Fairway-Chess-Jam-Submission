@@ -5,6 +5,5 @@
 [node name="black_pawn" instance=ExtResource("1_2so2a")]
 
 [node name="pawn-rigid" parent="." index="0"]
-axis_lock_angular_x = true
-axis_lock_angular_y = true
-axis_lock_angular_z = true
+lock_rotation = true
+freeze = true

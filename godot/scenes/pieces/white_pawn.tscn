@@ -8,9 +8,7 @@
 script = ExtResource("2_a78uk")
 
 [node name="pawn-rigid" parent="." index="0"]
-axis_lock_angular_x = true
-axis_lock_angular_y = true
-axis_lock_angular_z = true
+lock_rotation = true
 
 [node name="arrow" parent="." index="1" instance=ExtResource("3_nffe1")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, -1)

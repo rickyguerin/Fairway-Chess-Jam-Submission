@@ -5,6 +5,7 @@ var selected_piece: Node3D
 func _ready():
 	for child in $"White Pieces".get_children():
 		child.connect("clicked", _select_piece)
+		child.connect("capture", _unselect_all)
 
 
 func _unselect_all():

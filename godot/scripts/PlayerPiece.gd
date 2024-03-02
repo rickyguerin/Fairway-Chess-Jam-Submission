@@ -2,6 +2,7 @@ extends Node3D
 class_name PlayerPiece
 
 signal clicked(node)
+signal capture
 
 const SELECTED_MATERIAL := preload("res://assets/materials/selected.tres")
 const ARROW_SCENE := preload("res://scenes/arrow.tscn")
@@ -21,6 +22,7 @@ const MAX_IMPULSE := 7
 func _ready():
 	rigid_body.connect("mouse_entered", _on_mouse_entered)
 	rigid_body.connect("mouse_exited", _on_mouse_exited)
+	rigid_body.connect("body_entered", _on_body_entered)
 
 
 func _physics_process(delta):
@@ -71,3 +73,9 @@ func _on_mouse_entered():
 
 func _on_mouse_exited():
 	mouse_is_hovering = false
+
+
+func _on_body_entered(info):
+	if (info.get_collision_layer() == 1):
+		info.queue_free()
+		emit_signal("capture")

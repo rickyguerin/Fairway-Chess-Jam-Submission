@@ -39,6 +39,7 @@ func select():
 	mesh_instance.set_surface_override_material(0, SELECTED_MATERIAL)
 	arrow.visible = true
 	is_selected = true
+	rigid_body.freeze = false
 
 
 func unselect():
@@ -46,6 +47,7 @@ func unselect():
 	mesh_instance.set_surface_override_material(0, null)
 	arrow.visible = false
 	is_selected = false
+	rigid_body.freeze = true
 
 
 func _on_mouse_entered():

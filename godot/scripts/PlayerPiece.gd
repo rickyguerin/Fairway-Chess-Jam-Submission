@@ -24,6 +24,10 @@ func _ready():
 
 
 func _physics_process(delta):
+	# Prevent bug where sometimes pieces get "stuck" moving
+	if rigid_body.linear_velocity.length() < 0.1:
+		rigid_body.linear_velocity = Vector3()
+
 	if not is_selected or rigid_body.linear_velocity.length() > 0:
 		return
 

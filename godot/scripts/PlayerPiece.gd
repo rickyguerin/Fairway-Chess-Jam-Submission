@@ -10,8 +10,8 @@ const ARROW_SCENE := preload("res://scenes/arrow.tscn")
 @onready var is_selected := false
 
 func _ready():
-	$pawn/StaticBody3D.connect("mouse_entered", _on_mouse_entered)
-	$pawn/StaticBody3D.connect("mouse_exited", _on_mouse_exited)
+	$"pawn-rigid".connect("mouse_entered", _on_mouse_entered)
+	$"pawn-rigid".connect("mouse_exited", _on_mouse_exited)
 
 
 func _physics_process(delta):
@@ -32,14 +32,14 @@ func _unhandled_input(event):
 
 
 func select():
-	$pawn.set_surface_override_material(0, SELECTED_MATERIAL)
+	$"pawn-rigid/pawn-rigid".set_surface_override_material(0, SELECTED_MATERIAL)
 	$arrow.visible = true
 	is_selected = true
 
 
 func unselect():
 	rotation = Vector3()
-	$pawn.set_surface_override_material(0, null)
+	$"pawn-rigid/pawn-rigid".set_surface_override_material(0, null)
 	$arrow.visible = false
 	is_selected = false
 

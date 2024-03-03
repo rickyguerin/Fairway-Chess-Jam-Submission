@@ -1,0 +1,9 @@
+[gd_scene load_steps=3 format=3 uid="uid://bp2e40f5hbyyb"]
+
+[ext_resource type="PackedScene" uid="uid://d06k0tt41gi2q" path="res://assets/models/Arrow.glb" id="1_13whf"]
+[ext_resource type="Material" uid="uid://ynos38m5j8hn" path="res://assets/materials/selected.tres" id="2_7vy3h"]
+
+[node name="Arrow" instance=ExtResource("1_13whf")]
+
+[node name="Mesh" parent="." index="0"]
+surface_material_override/0 = ExtResource("2_7vy3h")

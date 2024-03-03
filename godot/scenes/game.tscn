@@ -1,10 +1,12 @@
-[gd_scene load_steps=7 format=3 uid="uid://4yetqslefb6c"]
+[gd_scene load_steps=9 format=3 uid="uid://4yetqslefb6c"]
 
 [ext_resource type="Script" path="res://scripts/game.gd" id="1_1yvmv"]
 [ext_resource type="PackedScene" uid="uid://dmkvcps1nimot" path="res://scenes/board.tscn" id="1_v7mcm"]
 [ext_resource type="PackedScene" uid="uid://bv1ixjptpruna" path="res://scenes/pieces/white/WhitePawn.tscn" id="4_72ydc"]
 [ext_resource type="PackedScene" uid="uid://s8231es6hyhf" path="res://scenes/pieces/black/BlackPawn.tscn" id="4_ne6np"]
 [ext_resource type="PackedScene" uid="uid://vy7keink38n2" path="res://scenes/OrbitCamera.tscn" id="4_qw6ff"]
+[ext_resource type="PackedScene" uid="uid://bul70oj43vfih" path="res://scenes/pieces/white/WhiteRook.tscn" id="4_wkxt7"]
+[ext_resource type="PackedScene" uid="uid://wdcdaoltkksa" path="res://scenes/pieces/black/BlackRook.tscn" id="6_7xk31"]
 
 [sub_resource type="Environment" id="Environment_8k3b6"]
 background_mode = 1
@@ -52,6 +54,12 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 5, 0, 5)
 [node name="Pawn 8" parent="White Pieces" instance=ExtResource("4_72ydc")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 7, 0, 5)
 
+[node name="Rook 1" parent="White Pieces" instance=ExtResource("4_wkxt7")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -7, 0, 7)
+
+[node name="Rook 2" parent="White Pieces" instance=ExtResource("4_wkxt7")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 7, 0, 7)
+
 [node name="Black Pieces" type="Node" parent="."]
 
 [node name="Pawn 1" parent="Black Pieces" instance=ExtResource("4_ne6np")]
@@ -77,5 +85,11 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 5, 0, -5)
 
 [node name="Pawn 8" parent="Black Pieces" instance=ExtResource("4_ne6np")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 7, 0, -5)
+
+[node name="Rook 1" parent="Black Pieces" instance=ExtResource("6_7xk31")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -7, 0, -7)
+
+[node name="Rook 2" parent="Black Pieces" instance=ExtResource("6_7xk31")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 7, 0, -7)
 
 [node name="OrbitCamera" parent="." instance=ExtResource("4_qw6ff")]

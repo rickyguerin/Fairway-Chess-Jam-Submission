@@ -1,0 +1,28 @@
+[gd_scene load_steps=6 format=3 uid="uid://bul70oj43vfih"]
+
+[ext_resource type="PackedScene" uid="uid://bnsretic8f3eg" path="res://assets/models/pieces/Rook.glb" id="1_en4i8"]
+[ext_resource type="Script" path="res://scripts/PlayerPiece.gd" id="2_64irf"]
+[ext_resource type="Material" uid="uid://b8w3ll74nwjm5" path="res://assets/materials/White.tres" id="2_xymww"]
+[ext_resource type="PackedScene" uid="uid://d17ovg3me6v5e" path="res://scenes/pieces/Arrow.tscn" id="4_604kh"]
+
+[sub_resource type="ConvexPolygonShape3D" id="ConvexPolygonShape3D_w3dgs"]
+points = PackedVector3Array(-0.5, 0, 0, -0.433046, 0, -0.25, -0.433046, 0, 0.249902, -0.5, 2.1, 0, -0.250098, 0, -0.433046, -0.433046, 2.1, -0.25, -0.25, 0, 0.432948, -0.433046, 2.1, 0.249902, 0, 0, -0.5, -0.250098, 2.1, -0.433046, -9.78708e-05, 0, 0.5, -0.25, 2.1, 0.432948, 0.25, 0, -0.433046, 0, 2.1, -0.5, 0.25, 0, 0.432948, -9.78708e-05, 2.1, 0.5, 0.432948, 0, -0.25, 0.25, 2.1, -0.433046, 0.432948, 0, 0.25, 0.25, 2.1, 0.432948, 0.5, 0, 0, 0.432948, 2.1, -0.25, 0.432948, 2.1, 0.25, 0.5, 2.1, 0)
+
+[node name="Rook" instance=ExtResource("1_en4i8")]
+collision_layer = 3
+collision_mask = 3
+max_contacts_reported = 1
+contact_monitor = true
+lock_rotation = true
+freeze = true
+script = ExtResource("2_64irf")
+
+[node name="Mesh" parent="." index="0"]
+surface_material_override/0 = ExtResource("2_xymww")
+
+[node name="Collision" type="CollisionShape3D" parent="." index="1"]
+shape = SubResource("ConvexPolygonShape3D_w3dgs")
+
+[node name="Arrow" parent="." index="2" instance=ExtResource("4_604kh")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, -1)
+visible = false

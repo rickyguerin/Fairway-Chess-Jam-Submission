@@ -1,4 +1,4 @@
-[gd_scene load_steps=3 format=3 uid="uid://bp2e40f5hbyyb"]
+[gd_scene load_steps=3 format=3 uid="uid://d17ovg3me6v5e"]
 
 [ext_resource type="PackedScene" uid="uid://d06k0tt41gi2q" path="res://assets/models/Arrow.glb" id="1_13whf"]
 [ext_resource type="Material" uid="uid://ynos38m5j8hn" path="res://assets/materials/selected.tres" id="2_7vy3h"]

@@ -1,0 +1,28 @@
+[gd_scene load_steps=6 format=3 uid="uid://bjwril5nfffns"]
+
+[ext_resource type="PackedScene" uid="uid://5glw7yemsbev" path="res://assets/models/pieces/King.glb" id="1_jvmja"]
+[ext_resource type="Material" uid="uid://b8w3ll74nwjm5" path="res://assets/materials/White.tres" id="2_8b05h"]
+[ext_resource type="PackedScene" uid="uid://d17ovg3me6v5e" path="res://scenes/pieces/Arrow.tscn" id="2_oquey"]
+[ext_resource type="Script" path="res://scripts/PlayerPiece.gd" id="2_y0gb3"]
+
+[sub_resource type="ConvexPolygonShape3D" id="ConvexPolygonShape3D_uut2f"]
+points = PackedVector3Array(-0.5, 0, 0, -0.433046, 0, -0.25, -0.433046, 0, 0.249902, -0.5, 0.699746, 0, -0.250098, 0, -0.433046, -0.433046, 0.699746, -0.25, -0.25, 0, 0.432948, -0.250098, 0.499775, 0.432948, -0.433046, 0.699746, 0.249902, -0.37823, 2.29981, 0.218285, -0.436668, 2.29981, 0, -0.37823, 2.29981, -0.218383, 0, 0, -0.5, -0.250098, 0.699746, -0.433046, -9.78708e-05, 0, 0.5, -0.250098, 0.699746, 0.432948, -0.218383, 2.29981, 0.378132, -0.297083, 2.89973, 0.167972, -0.297083, 2.89973, -0.16807, -0.218383, 2.29981, -0.37823, 0.25, 0, -0.433046, 0, 0.699746, -0.5, 0.25, 0, 0.432948, -9.78708e-05, 0.699746, 0.5, -9.78708e-05, 2.29981, 0.43657, -9.78708e-05, 3.1, 0.194009, -0.0971026, 3.1, 0.167972, -0.0971026, 3.1, -0.16807, 0, 3.1, -0.194107, 0, 2.29981, -0.436668, 0.432948, 0, -0.25, 0.25, 0.699746, -0.433046, 0.218285, 2.29981, -0.37823, 0.432948, 0, 0.25, 0.25, 0.699746, 0.432948, 0.218285, 2.29981, 0.378132, 0.0970047, 3.1, 0.167972, 0.0970047, 3.1, -0.16807, 0.5, 0, 0, 0.432948, 0.699746, -0.25, 0.378132, 2.29981, -0.218383, 0.296985, 2.89973, -0.16807, 0.432948, 0.699746, 0.25, 0.378132, 2.29981, 0.218285, 0.296985, 2.89973, 0.167972, 0.5, 0.699746, 0, 0.43657, 2.29981, 0)
+
+[node name="King" instance=ExtResource("1_jvmja")]
+collision_layer = 3
+collision_mask = 3
+max_contacts_reported = 1
+contact_monitor = true
+lock_rotation = true
+freeze = true
+script = ExtResource("2_y0gb3")
+
+[node name="Mesh" parent="." index="0"]
+surface_material_override/0 = ExtResource("2_8b05h")
+
+[node name="Collision" type="CollisionShape3D" parent="." index="1"]
+shape = SubResource("ConvexPolygonShape3D_uut2f")
+
+[node name="Arrow" parent="." index="2" instance=ExtResource("2_oquey")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, -1)
+visible = false

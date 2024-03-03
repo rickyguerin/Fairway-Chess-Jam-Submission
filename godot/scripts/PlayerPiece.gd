@@ -1,45 +1,39 @@
-extends Node3D
+extends RigidBody3D
 class_name PlayerPiece
 
 signal clicked(node)
 signal capture
 
 const SELECTED_MATERIAL := preload("res://assets/materials/selected.tres")
-const ARROW_SCENE := preload("res://scenes/arrow.tscn")
 
 const MIN_ROTATION := -PI/4
 const MAX_ROTATION := PI/4
-
 const MAX_IMPULSE := 7
-
-@onready var rigid_body := $"pawn-rigid"
-@onready var mesh_instance := $"pawn-rigid/pawn-rigid"
-@onready var arrow := $"pawn-rigid/arrow"
 
 @onready var mouse_is_hovering := false
 @onready var is_selected := false
 
 func _ready():
-	rigid_body.connect("mouse_entered", _on_mouse_entered)
-	rigid_body.connect("mouse_exited", _on_mouse_exited)
-	rigid_body.connect("body_entered", _on_body_entered)
+	connect("mouse_entered", _on_mouse_entered)
+	connect("mouse_exited", _on_mouse_exited)
+	connect("body_entered", _on_body_entered)
 
 
 func _physics_process(delta):
 	# Prevent bug where sometimes pieces get "stuck" moving
-	if rigid_body.linear_velocity.length() < 0.1:
-		rigid_body.linear_velocity = Vector3()
+	if linear_velocity.length() < 0.1:
+		linear_velocity = Vector3()
 
-	if not is_selected or rigid_body.linear_velocity.length() > 0:
+	if not is_selected or linear_velocity.length() > 0:
 		return
 
 	if Input.is_action_pressed("A"):
-		rigid_body.rotate_y(0.05)
+		rotate_y(0.05)
 
 	elif Input.is_action_pressed("D"):
-		rigid_body.rotate_y(-0.05)
+		rotate_y(-0.05)
 
-	rigid_body.rotation.y = clamp(rigid_body.rotation.y, MIN_ROTATION, MAX_ROTATION)
+	rotation.y = clamp(rotation.y, MIN_ROTATION, MAX_ROTATION)
 
 
 func _unhandled_input(event):
@@ -47,24 +41,24 @@ func _unhandled_input(event):
 		if event.button_index == MOUSE_BUTTON_LEFT and event.is_pressed():
 			clicked.emit(self)
 			
-	if is_selected and Input.is_action_just_pressed("Space") and rigid_body.linear_velocity.length() == 0:
-		var d = (rigid_body.transform.basis * Vector3.FORWARD).normalized()
-		rigid_body.apply_impulse(d * MAX_IMPULSE)
+	if is_selected and Input.is_action_just_pressed("Space") and linear_velocity.length() == 0:
+		var d = (transform.basis * Vector3.FORWARD).normalized()
+		apply_impulse(d * MAX_IMPULSE)
 
 
 func select():
-	mesh_instance.set_surface_override_material(0, SELECTED_MATERIAL)
-	arrow.visible = true
+	$Mesh.material_override = SELECTED_MATERIAL
+	$Arrow.visible = true
 	is_selected = true
-	rigid_body.freeze = false
+	freeze = false
 
 
 func unselect():
-	rigid_body.rotation = Vector3()
-	mesh_instance.set_surface_override_material(0, null)
-	arrow.visible = false
+	rotation = Vector3()
+	$Mesh.material_override = null
+	$Arrow.visible = false
 	is_selected = false
-	rigid_body.freeze = true
+	freeze = true
 
 
 func _on_mouse_entered():

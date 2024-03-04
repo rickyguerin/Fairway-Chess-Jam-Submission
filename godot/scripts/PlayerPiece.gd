@@ -23,11 +23,7 @@ func _ready():
 
 
 func _process(delta):
-	# Prevent bug where sometimes pieces get "stuck" moving
-	if linear_velocity.length() < 0.1:
-		linear_velocity = Vector3()
-
-	if not is_selected or linear_velocity.length() > 0:
+	if not is_selected:
 		return
 
 	if Input.is_action_pressed("A"):
@@ -49,7 +45,7 @@ func _input(event):
 	if not is_selected:
 		return
 
-	if Input.is_action_just_pressed("Space") and linear_velocity.length() == 0:
+	if Input.is_action_just_pressed("Space"):
 		var d = (transform.basis * impulse_direction).normalized()
 		apply_impulse(d * max_impulse)
 

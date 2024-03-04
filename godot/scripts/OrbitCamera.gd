@@ -5,7 +5,7 @@ extends Node3D
 func _ready():
 	pass # Replace with function body.
 
-func _unhandled_input(event):
+func _input(event):
 	if Input.is_mouse_button_pressed(MOUSE_BUTTON_WHEEL_UP):
 		$InnerGimbal/Camera3D.translate(Vector3(0, 0, -1))
 

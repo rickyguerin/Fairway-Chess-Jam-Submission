@@ -21,6 +21,16 @@ func _ready():
 	connect("body_entered", _on_body_entered)
 
 
+func _input(event):
+	if mouse_is_hovering and event is InputEventMouseButton:
+		if event.button_index == MOUSE_BUTTON_LEFT and event.is_pressed():
+			clicked.emit(self)
+			
+	if is_selected and Input.is_action_just_pressed("Space") and linear_velocity.length() == 0:
+		var d = (transform.basis * impulse_direction).normalized()
+		apply_impulse(d * max_impulse)
+
+
 func _physics_process(delta):
 	# Prevent bug where sometimes pieces get "stuck" moving
 	if linear_velocity.length() < 0.1:
@@ -36,16 +46,6 @@ func _physics_process(delta):
 		rotate_y(-0.05)
 
 	rotation.y = clamp(rotation.y, -deg_to_rad(max_angle), deg_to_rad(max_angle))
-
-
-func _unhandled_input(event):
-	if mouse_is_hovering and event is InputEventMouseButton:
-		if event.button_index == MOUSE_BUTTON_LEFT and event.is_pressed():
-			clicked.emit(self)
-			
-	if is_selected and Input.is_action_just_pressed("Space") and linear_velocity.length() == 0:
-		var d = (transform.basis * impulse_direction).normalized()
-		apply_impulse(d * max_impulse)
 
 
 func select():

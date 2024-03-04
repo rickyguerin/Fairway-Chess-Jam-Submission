@@ -12,6 +12,7 @@ const SELECTED_MATERIAL := preload("res://assets/materials/selected.tres")
 @export var max_angle := 10.0
 @export var starting_directions: Array[float] = [0, 45, 90, 135, 180, 225, 270, 315]
 
+@onready var direction_index := 0
 @onready var mouse_is_hovering := false
 @onready var is_selected := false
 
@@ -25,10 +26,22 @@ func _input(event):
 	if mouse_is_hovering and event is InputEventMouseButton:
 		if event.button_index == MOUSE_BUTTON_LEFT and event.is_pressed():
 			clicked.emit(self)
-			
-	if is_selected and Input.is_action_just_pressed("Space") and linear_velocity.length() == 0:
+			return
+
+	if not is_selected:
+		return
+
+	if Input.is_action_just_pressed("Space") and linear_velocity.length() == 0:
 		var d = (transform.basis * impulse_direction).normalized()
 		apply_impulse(d * max_impulse)
+
+	if event.is_action_pressed("Q"):
+		direction_index -= 1
+		direction_index = posmod(direction_index, len(starting_directions))
+
+	if event.is_action_pressed("E"):
+		direction_index += 1
+		direction_index = posmod(direction_index, len(starting_directions))
 
 
 func _physics_process(delta):

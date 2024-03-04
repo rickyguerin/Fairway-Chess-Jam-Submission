@@ -13,6 +13,7 @@ collision_layer = 3
 collision_mask = 3
 max_contacts_reported = 1
 contact_monitor = true
+lock_rotation = true
 script = ExtResource("2_64irf")
 starting_directions = Array[float]([0.0, 90.0, 180.0, 270.0])
 

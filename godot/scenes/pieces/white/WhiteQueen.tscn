@@ -13,6 +13,7 @@ collision_layer = 3
 collision_mask = 3
 max_contacts_reported = 1
 contact_monitor = true
+lock_rotation = true
 script = ExtResource("2_ou88q")
 
 [node name="Mesh" parent="." index="0"]

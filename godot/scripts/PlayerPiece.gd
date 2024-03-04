@@ -22,6 +22,23 @@ func _ready():
 	connect("body_entered", _on_body_entered)
 
 
+func _process(delta):
+	# Prevent bug where sometimes pieces get "stuck" moving
+	if linear_velocity.length() < 0.1:
+		linear_velocity = Vector3()
+
+	if not is_selected or linear_velocity.length() > 0:
+		return
+
+	if Input.is_action_pressed("A"):
+		rotate_y(0.05)
+
+	elif Input.is_action_pressed("D"):
+		rotate_y(-0.05)
+
+	rotation.y = clamp(rotation.y, -deg_to_rad(max_angle), deg_to_rad(max_angle))
+
+
 func _input(event):
 	if mouse_is_hovering and event is InputEventMouseButton:
 		if event.button_index == MOUSE_BUTTON_LEFT and event.is_pressed():
@@ -42,23 +59,6 @@ func _input(event):
 	if event.is_action_pressed("E"):
 		direction_index += 1
 		direction_index = posmod(direction_index, len(starting_directions))
-
-
-func _physics_process(delta):
-	# Prevent bug where sometimes pieces get "stuck" moving
-	if linear_velocity.length() < 0.1:
-		linear_velocity = Vector3()
-
-	if not is_selected or linear_velocity.length() > 0:
-		return
-
-	if Input.is_action_pressed("A"):
-		rotate_y(0.05)
-
-	elif Input.is_action_pressed("D"):
-		rotate_y(-0.05)
-
-	rotation.y = clamp(rotation.y, -deg_to_rad(max_angle), deg_to_rad(max_angle))
 
 
 func select():

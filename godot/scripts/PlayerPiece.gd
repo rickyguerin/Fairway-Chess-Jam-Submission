@@ -56,17 +56,20 @@ func _input(event):
 	if event.is_action_pressed("Q"):
 		direction_index -= 1
 		direction_index = posmod(direction_index, len(starting_directions))
+		_set_direction()
 
 	if event.is_action_pressed("E"):
 		direction_index += 1
 		direction_index = posmod(direction_index, len(starting_directions))
+		_set_direction()
 
 
 func select():
 	$Mesh.material_override = SELECTED_MATERIAL
 	$Arrow.visible = true
 	is_selected = true
-	freeze = false
+	direction_index = 0
+	_set_direction()
 
 
 func unselect():
@@ -74,7 +77,6 @@ func unselect():
 	$Mesh.material_override = null
 	$Arrow.visible = false
 	is_selected = false
-	freeze = true
 
 
 func _on_mouse_entered():
@@ -89,3 +91,7 @@ func _on_body_entered(info):
 	if (info.get_collision_layer() == 1):
 		info.queue_free()
 		emit_signal("capture")
+
+
+func _set_direction():
+	set_rotation_degrees(Vector3(0, -starting_directions[direction_index], 0))

@@ -36,7 +36,8 @@ func _process(delta):
 	elif Input.is_action_pressed("D"):
 		rotate_y(-0.05)
 
-	rotation.y = clamp(rotation.y, -deg_to_rad(max_angle), deg_to_rad(max_angle))
+	var dir = -starting_directions[direction_index]
+	set_rotation_degrees(Vector3(0, clamp(rotation_degrees.y, dir - max_angle, dir + max_angle), 0))
 
 
 func _input(event):

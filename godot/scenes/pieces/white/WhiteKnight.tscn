@@ -1,0 +1,28 @@
+[gd_scene load_steps=6 format=3 uid="uid://cjfgc8v7obay7"]
+
+[ext_resource type="PackedScene" uid="uid://b24ani7d2u0uy" path="res://assets/models/pieces/Knight.glb" id="1_qvwv5"]
+[ext_resource type="Script" path="res://scripts/PlayerPiece.gd" id="2_dtsba"]
+[ext_resource type="Material" uid="uid://b8w3ll74nwjm5" path="res://assets/materials/White.tres" id="2_kf7ml"]
+[ext_resource type="PackedScene" uid="uid://d17ovg3me6v5e" path="res://scenes/pieces/Arrow.tscn" id="3_a0hh4"]
+
+[sub_resource type="ConvexPolygonShape3D" id="ConvexPolygonShape3D_c8sd0"]
+points = PackedVector3Array(-0.5, 0, 0, -0.433046, 0, -0.25, -0.433046, 0, 0.25, -0.5, 0.249987, 0, -0.433046, 0.249987, -0.25, -0.250098, 0, -0.433046, -0.25, 0, 0.432948, -0.433046, 0.249987, 0.25, -0.200078, 1.71248, 0.346319, -0.250098, 1.71248, 0, -0.200078, 1.71248, -0.346417, -0.250098, 0.249987, -0.433046, -9.78708e-05, 0, -0.5, 0, 0, 0.5, -0.25, 0.249987, 0.432948, -9.78708e-05, 1.71248, 0.399961, 0, 2.0125, 0.346319, -9.78708e-05, 2.0125, 0, -9.78708e-05, 1.71248, -0.400059, -9.78708e-05, 0.249987, -0.5, 0.249902, 0, -0.433046, 0.25, 0, 0.432948, 0, 0.249987, 0.5, 0.19998, 1.71248, 0.346319, 0.249902, 1.71248, -9.78708e-05, 0.19998, 1.71248, -0.346417, 0.249902, 0.249987, -0.433046, 0.432948, 0, -0.250098, 0.432948, 0, 0.249902, 0.25, 0.249987, 0.432948, 0.432948, 0.249987, 0.249902, 0.5, 0.249987, -9.78708e-05, 0.432948, 0.249987, -0.250098, 0.5, 0, -9.78708e-05)
+
+[node name="Knight" instance=ExtResource("1_qvwv5")]
+collision_layer = 3
+collision_mask = 3
+max_contacts_reported = 1
+contact_monitor = true
+lock_rotation = true
+freeze = true
+script = ExtResource("2_dtsba")
+
+[node name="Mesh" parent="." index="0"]
+surface_material_override/0 = ExtResource("2_kf7ml")
+
+[node name="Collision" type="CollisionShape3D" parent="." index="1"]
+shape = SubResource("ConvexPolygonShape3D_c8sd0")
+
+[node name="Arrow" parent="." index="2" instance=ExtResource("3_a0hh4")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, -1)
+visible = false

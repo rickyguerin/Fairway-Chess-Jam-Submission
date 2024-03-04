@@ -10,7 +10,7 @@ const SELECTED_MATERIAL := preload("res://assets/materials/selected.tres")
 @export var impulse_direction := Vector3(0, 0, -1)
 
 @export var max_angle := 10.0
-@export var starting_directions: Array[float] = [0.0]
+@export var starting_directions: Array[float] = [0, 45, 90, 135, 180, 225, 270, 315]
 
 @onready var mouse_is_hovering := false
 @onready var is_selected := false

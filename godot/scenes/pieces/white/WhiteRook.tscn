@@ -16,6 +16,7 @@ contact_monitor = true
 lock_rotation = true
 freeze = true
 script = ExtResource("2_64irf")
+starting_directions = Array[float]([0.0, 90.0, 180.0, 270.0])
 
 [node name="Mesh" parent="." index="0"]
 surface_material_override/0 = ExtResource("2_xymww")

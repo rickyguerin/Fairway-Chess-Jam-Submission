@@ -6,9 +6,11 @@ signal capture
 
 const SELECTED_MATERIAL := preload("res://assets/materials/selected.tres")
 
-const MIN_ROTATION := -PI/4
-const MAX_ROTATION := PI/4
-const MAX_IMPULSE := 7
+@export var max_impulse := 24.0
+@export var impulse_direction := Vector3(0, 0, -1)
+
+@export var max_angle := 10.0
+@export var starting_directions: Array[float] = [0.0]
 
 @onready var mouse_is_hovering := false
 @onready var is_selected := false
@@ -33,7 +35,7 @@ func _physics_process(delta):
 	elif Input.is_action_pressed("D"):
 		rotate_y(-0.05)
 
-	rotation.y = clamp(rotation.y, MIN_ROTATION, MAX_ROTATION)
+	rotation.y = clamp(rotation.y, -deg_to_rad(max_angle), deg_to_rad(max_angle))
 
 
 func _unhandled_input(event):
@@ -42,8 +44,8 @@ func _unhandled_input(event):
 			clicked.emit(self)
 			
 	if is_selected and Input.is_action_just_pressed("Space") and linear_velocity.length() == 0:
-		var d = (transform.basis * Vector3.FORWARD).normalized()
-		apply_impulse(d * MAX_IMPULSE)
+		var d = (transform.basis * impulse_direction).normalized()
+		apply_impulse(d * max_impulse)
 
 
 func select():

@@ -16,6 +16,7 @@ contact_monitor = true
 lock_rotation = true
 freeze = true
 script = ExtResource("2_y0gb3")
+max_impulse = 8.0
 
 [node name="Mesh" parent="." index="0"]
 surface_material_override/0 = ExtResource("2_8b05h")

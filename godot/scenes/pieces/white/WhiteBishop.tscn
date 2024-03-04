@@ -13,8 +13,6 @@ collision_layer = 3
 collision_mask = 3
 max_contacts_reported = 1
 contact_monitor = true
-lock_rotation = true
-freeze = true
 script = ExtResource("2_oex1b")
 starting_directions = Array[float]([45.0, 135.0, 225.0, 315.0])
 

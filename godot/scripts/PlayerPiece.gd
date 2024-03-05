@@ -50,10 +50,11 @@ func _input(event):
 
 func _process(delta):
 	rotation_direction = 0
-	
+
 	if is_selected:
 		if Input.is_action_pressed("A"):
 			rotation_direction = 1
+
 		elif Input.is_action_pressed("D"):
 			rotation_direction = -1
 

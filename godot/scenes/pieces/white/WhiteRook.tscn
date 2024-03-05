@@ -15,7 +15,7 @@ max_contacts_reported = 1
 contact_monitor = true
 can_sleep = false
 script = ExtResource("2_64irf")
-starting_directions = Array[float]([0.0, 90.0, 180.0, 270.0])
+allowed_directions = Array[Vector3]([Vector3(0, 0, -1), Vector3(1, 0, 0), Vector3(0, 0, 1), Vector3(-1, 0, 0)])
 
 [node name="Mesh" parent="." index="0"]
 surface_material_override/0 = ExtResource("2_xymww")

@@ -9,9 +9,17 @@ const SELECTED_MATERIAL := preload("res://assets/materials/selected.tres")
 
 @export var max_impulse := 24.0
 @export var impulse_direction := Vector3(0, 0, -1)
-
 @export var max_angle := 10.0
-@export var starting_directions: Array[float] = [0, 45, 90, 135, 180, 225, 270, 315]
+@export var allowed_directions: Array[Vector3] = [
+	Vector3.FORWARD,
+	Vector3.FORWARD + Vector3.RIGHT,
+	Vector3.RIGHT,
+	Vector3.RIGHT + Vector3.BACK,
+	Vector3.BACK,
+	Vector3.BACK + Vector3.LEFT,
+	Vector3.LEFT,
+	Vector3.LEFT + Vector3.FORWARD,
+]
 
 @onready var direction_index := 0
 @onready var mouse_is_hovering := false
@@ -38,14 +46,6 @@ func _input(event):
 		var d = (transform.basis * impulse_direction).normalized()
 		apply_impulse(d * max_impulse)
 
-	if event.is_action_pressed("Q"):
-		direction_index -= 1
-		direction_index = posmod(direction_index, len(starting_directions))
-
-	if event.is_action_pressed("E"):
-		direction_index += 1
-		direction_index = posmod(direction_index, len(starting_directions))
-
 
 func _process(delta):
 	rotation_direction = 0
@@ -58,7 +58,21 @@ func _process(delta):
 
 
 func _integrate_forces(state):
+	if not is_selected:
+		return
+
 	var trans = state.get_transform()
+
+	if Input.is_action_just_pressed("Q"):
+		direction_index -= 1
+		direction_index = posmod(direction_index, len(allowed_directions))
+		trans = trans.looking_at(trans.origin + allowed_directions[direction_index])
+
+	if Input.is_action_just_pressed("E"):
+		direction_index += 1
+		direction_index = posmod(direction_index, len(allowed_directions))
+		trans = trans.looking_at(trans.origin + allowed_directions[direction_index])
+
 	trans = trans.rotated_local(Vector3.UP, deg_to_rad(rotation_direction * ROTATION_SPEED))
 	state.set_transform(trans)
 
@@ -67,7 +81,6 @@ func select():
 	$Mesh.material_override = SELECTED_MATERIAL
 	$Arrow.visible = true
 	is_selected = true
-	direction_index = 0
 
 
 func unselect():

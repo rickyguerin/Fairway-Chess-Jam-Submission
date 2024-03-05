@@ -4,22 +4,13 @@ class_name PlayerPiece
 signal clicked(node)
 signal capture
 
-const ROTATION_SPEED := 1.5
+const ROTATION_SPEED := 0.02
 const SELECTED_MATERIAL := preload("res://assets/materials/selected.tres")
 
 @export var max_impulse := 24.0
 @export var impulse_direction := Vector3(0, 0, -1)
 @export var max_angle := 10.0
-@export var allowed_directions: Array[Vector3] = [
-	Vector3.FORWARD,
-	Vector3.FORWARD + Vector3.RIGHT,
-	Vector3.RIGHT,
-	Vector3.RIGHT + Vector3.BACK,
-	Vector3.BACK,
-	Vector3.BACK + Vector3.LEFT,
-	Vector3.LEFT,
-	Vector3.LEFT + Vector3.FORWARD,
-]
+@export var allowed_directions: Array[float] = [0, -45, -90, -135, 180, 135, 90, 45]
 
 @onready var direction_index := 0
 @onready var mouse_is_hovering := false
@@ -68,19 +59,26 @@ func _integrate_forces(state):
 	if reset_rotation:
 		reset_rotation = false
 		direction_index = 0
-		trans = trans.looking_at(trans.origin + allowed_directions[direction_index])
+		trans.basis = trans.basis.from_euler(Vector3())
 
 	elif Input.is_action_just_pressed("Q"):
 		direction_index -= 1
 		direction_index = posmod(direction_index, len(allowed_directions))
-		trans = trans.looking_at(trans.origin + allowed_directions[direction_index])
+		trans.basis = trans.basis.from_euler(Vector3(0, deg_to_rad(allowed_directions[direction_index]), 0))
 
 	elif Input.is_action_just_pressed("E"):
 		direction_index += 1
 		direction_index = posmod(direction_index, len(allowed_directions))
-		trans = trans.looking_at(trans.origin + allowed_directions[direction_index])
+		trans.basis = trans.basis.from_euler(Vector3(0, deg_to_rad(allowed_directions[direction_index]), 0))
 
-	trans = trans.rotated_local(Vector3.UP, deg_to_rad(rotation_direction * ROTATION_SPEED))
+	elif Input.is_action_pressed("A") or Input.is_action_pressed("D"):
+		var curr = trans.basis.get_euler().y
+		var change = rotation_direction * ROTATION_SPEED
+
+		if not _should_clamp(rad_to_deg(curr + change), allowed_directions[direction_index]):
+			trans.basis = trans.basis.from_euler(Vector3(0, curr+change, 0))
+
+
 	state.set_transform(trans)
 
 

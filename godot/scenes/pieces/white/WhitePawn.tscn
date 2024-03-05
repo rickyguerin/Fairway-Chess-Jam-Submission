@@ -18,7 +18,7 @@ lock_rotation = true
 script = ExtResource("2_qku0v")
 max_impulse = 8.0
 max_angle = 45.0
-allowed_directions = Array[Vector3]([Vector3(0, 0, -1)])
+allowed_directions = Array[float]([0.0])
 
 [node name="Mesh" parent="." index="0"]
 surface_material_override/0 = ExtResource("3_5uete")

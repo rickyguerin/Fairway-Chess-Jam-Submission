@@ -4,6 +4,7 @@ class_name PlayerPiece
 signal clicked(node)
 signal capture
 
+const ROTATION_SPEED := 1.5
 const SELECTED_MATERIAL := preload("res://assets/materials/selected.tres")
 
 @export var max_impulse := 24.0
@@ -16,21 +17,12 @@ const SELECTED_MATERIAL := preload("res://assets/materials/selected.tres")
 @onready var mouse_is_hovering := false
 @onready var is_selected := false
 
+var rotation_direction := 0
+
 func _ready():
 	connect("mouse_entered", _on_mouse_entered)
 	connect("mouse_exited", _on_mouse_exited)
 	connect("body_entered", _on_body_entered)
-
-
-func _process(delta):
-	if not is_selected:
-		return
-
-	if Input.is_action_pressed("A"):
-		rotate_y(0.05)
-
-	elif Input.is_action_pressed("D"):
-		rotate_y(-0.05)
 
 
 func _input(event):
@@ -53,6 +45,22 @@ func _input(event):
 	if event.is_action_pressed("E"):
 		direction_index += 1
 		direction_index = posmod(direction_index, len(starting_directions))
+
+
+func _process(delta):
+	rotation_direction = 0
+	
+	if is_selected:
+		if Input.is_action_pressed("A"):
+			rotation_direction = 1
+		elif Input.is_action_pressed("D"):
+			rotation_direction = -1
+
+
+func _integrate_forces(state):
+	var trans = state.get_transform()
+	trans = trans.rotated_local(Vector3.UP, deg_to_rad(rotation_direction * ROTATION_SPEED))
+	state.set_transform(trans)
 
 
 func select():

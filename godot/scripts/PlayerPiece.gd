@@ -32,9 +32,6 @@ func _process(delta):
 	elif Input.is_action_pressed("D"):
 		rotate_y(-0.05)
 
-	var dir = -starting_directions[direction_index]
-	set_rotation_degrees(Vector3(0, clamp(rotation_degrees.y, dir - max_angle, dir + max_angle), 0))
-
 
 func _input(event):
 	if mouse_is_hovering and event is InputEventMouseButton:

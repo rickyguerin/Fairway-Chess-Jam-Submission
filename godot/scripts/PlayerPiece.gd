@@ -109,3 +109,14 @@ func _on_body_entered(info):
 	if (info.get_collision_layer() == 1):
 		info.queue_free()
 		emit_signal("capture")
+
+
+func _should_clamp(value: float, base_angle: float) -> bool:
+	if value >= base_angle - max_angle and value <= base_angle + max_angle:
+		return false
+
+	if base_angle == 180:
+		if value >= -base_angle - max_angle and value <= -base_angle + max_angle:
+			return false
+
+	return true

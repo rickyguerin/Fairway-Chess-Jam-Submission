@@ -1,4 +1,4 @@
-[gd_scene load_steps=22 format=3 uid="uid://4yetqslefb6c"]
+[gd_scene load_steps=23 format=3 uid="uid://4yetqslefb6c"]
 
 [ext_resource type="Script" path="res://scripts/game.gd" id="1_1yvmv"]
 [ext_resource type="PackedScene" uid="uid://dmkvcps1nimot" path="res://scenes/board.tscn" id="1_v7mcm"]
@@ -39,6 +39,9 @@ size = Vector3(2, 16, 16)
 [sub_resource type="BoxShape3D" id="BoxShape3D_a3an4"]
 size = Vector3(16, 2, 16)
 
+[sub_resource type="BoxShape3D" id="BoxShape3D_tvm3r"]
+size = Vector3(16, 2, 16)
+
 [node name="World" type="Node"]
 script = ExtResource("1_1yvmv")
 
@@ -49,7 +52,63 @@ sky_mode = 1
 [node name="WorldEnvironment" type="WorldEnvironment" parent="."]
 environment = SubResource("Environment_8k3b6")
 
+[node name="OrbitCamera" parent="." instance=ExtResource("4_qw6ff")]
+
 [node name="board" parent="." instance=ExtResource("1_v7mcm")]
+
+[node name="Walls" type="Node" parent="."]
+
+[node name="NorthBody" type="StaticBody3D" parent="Walls"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 8, -9)
+collision_layer = 3
+collision_mask = 3
+input_ray_pickable = false
+
+[node name="Collision" type="CollisionShape3D" parent="Walls/NorthBody"]
+shape = SubResource("BoxShape3D_4p80u")
+
+[node name="EastBody" type="StaticBody3D" parent="Walls"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 9, 8, 0)
+collision_layer = 3
+collision_mask = 3
+input_ray_pickable = false
+
+[node name="Collision" type="CollisionShape3D" parent="Walls/EastBody"]
+shape = SubResource("BoxShape3D_72h8m")
+
+[node name="SouthBody" type="StaticBody3D" parent="Walls"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 8, 9)
+collision_layer = 3
+collision_mask = 3
+input_ray_pickable = false
+
+[node name="Collision" type="CollisionShape3D" parent="Walls/SouthBody"]
+shape = SubResource("BoxShape3D_y4kb0")
+
+[node name="WestBody" type="StaticBody3D" parent="Walls"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -9, 8, 0)
+collision_layer = 3
+collision_mask = 3
+input_ray_pickable = false
+
+[node name="Collision" type="CollisionShape3D" parent="Walls/WestBody"]
+shape = SubResource("BoxShape3D_hxko1")
+
+[node name="Roof" type="StaticBody3D" parent="Walls"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 17, 0)
+collision_layer = 3
+collision_mask = 3
+
+[node name="Collision" type="CollisionShape3D" parent="Walls/Roof"]
+shape = SubResource("BoxShape3D_a3an4")
+
+[node name="StaticBody3D" type="StaticBody3D" parent="Walls"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -1, 0)
+collision_layer = 3
+collision_mask = 3
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Walls/StaticBody3D"]
+shape = SubResource("BoxShape3D_tvm3r")
 
 [node name="White Pieces" type="Node" parent="."]
 
@@ -150,51 +209,3 @@ transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, -1, 1,
 
 [node name="King" parent="Black Pieces" instance=ExtResource("12_ci14r")]
 transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 1, 1, -7)
-
-[node name="OrbitCamera" parent="." instance=ExtResource("4_qw6ff")]
-
-[node name="Walls" type="Node" parent="."]
-
-[node name="NorthBody" type="StaticBody3D" parent="Walls"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 8, -9)
-collision_layer = 3
-collision_mask = 3
-input_ray_pickable = false
-
-[node name="Collision" type="CollisionShape3D" parent="Walls/NorthBody"]
-shape = SubResource("BoxShape3D_4p80u")
-
-[node name="EastBody" type="StaticBody3D" parent="Walls"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 9, 8, 0)
-collision_layer = 3
-collision_mask = 3
-input_ray_pickable = false
-
-[node name="Collision" type="CollisionShape3D" parent="Walls/EastBody"]
-shape = SubResource("BoxShape3D_72h8m")
-
-[node name="SouthBody" type="StaticBody3D" parent="Walls"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 8, 9)
-collision_layer = 3
-collision_mask = 3
-input_ray_pickable = false
-
-[node name="Collision" type="CollisionShape3D" parent="Walls/SouthBody"]
-shape = SubResource("BoxShape3D_y4kb0")
-
-[node name="WestBody" type="StaticBody3D" parent="Walls"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -9, 8, 0)
-collision_layer = 3
-collision_mask = 3
-input_ray_pickable = false
-
-[node name="Collision" type="CollisionShape3D" parent="Walls/WestBody"]
-shape = SubResource("BoxShape3D_hxko1")
-
-[node name="Roof" type="StaticBody3D" parent="Walls"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 17, 0)
-collision_layer = 3
-collision_mask = 3
-
-[node name="Collision" type="CollisionShape3D" parent="Walls/Roof"]
-shape = SubResource("BoxShape3D_a3an4")

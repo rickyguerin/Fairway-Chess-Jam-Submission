@@ -5,5 +5,5 @@
 [node name="board" instance=ExtResource("1_djs6u")]
 
 [node name="StaticBody3D" parent="board" index="0"]
-collision_layer = 3
-collision_mask = 3
+collision_layer = 0
+collision_mask = 0

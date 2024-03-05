@@ -24,6 +24,7 @@ const SELECTED_MATERIAL := preload("res://assets/materials/selected.tres")
 @onready var direction_index := 0
 @onready var mouse_is_hovering := false
 @onready var is_selected := false
+@onready var reset_rotation := false
 
 var rotation_direction := 0
 
@@ -63,12 +64,17 @@ func _integrate_forces(state):
 
 	var trans = state.get_transform()
 
-	if Input.is_action_just_pressed("Q"):
+	if reset_rotation:
+		reset_rotation = false
+		direction_index = 0
+		trans = trans.looking_at(trans.origin + allowed_directions[direction_index])
+
+	elif Input.is_action_just_pressed("Q"):
 		direction_index -= 1
 		direction_index = posmod(direction_index, len(allowed_directions))
 		trans = trans.looking_at(trans.origin + allowed_directions[direction_index])
 
-	if Input.is_action_just_pressed("E"):
+	elif Input.is_action_just_pressed("E"):
 		direction_index += 1
 		direction_index = posmod(direction_index, len(allowed_directions))
 		trans = trans.looking_at(trans.origin + allowed_directions[direction_index])
@@ -81,6 +87,7 @@ func select():
 	$Mesh.material_override = SELECTED_MATERIAL
 	$Arrow.visible = true
 	is_selected = true
+	reset_rotation = true
 
 
 func unselect():

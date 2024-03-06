@@ -1,5 +1,7 @@
 extends Node
 
+signal turn_start(player)
+
 var selected_piece: Node3D
 var can_act := true
 
@@ -8,6 +10,8 @@ func _ready():
 		child.connect("clicked", _select_piece)
 		child.connect("capture", _unselect_all)
 		child.connect("moved", _deactivate_pieces)
+
+	turn_start.emit(G.Player.WHITE)
 
 
 func _unselect_all():

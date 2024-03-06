@@ -2,6 +2,7 @@ extends RigidBody3D
 class_name PlayerPiece
 
 signal clicked(node)
+signal moved
 signal capture
 
 const ROTATION_SPEED := 0.02
@@ -37,6 +38,7 @@ func _input(event):
 	if Input.is_action_just_pressed("Space"):
 		var d = (transform.basis * impulse_direction).normalized()
 		apply_impulse(d * max_impulse)
+		moved.emit()
 
 
 func _process(delta):

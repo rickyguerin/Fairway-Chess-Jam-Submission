@@ -1,5 +1,7 @@
 extends Node
 
+signal turn_end(player)
+
 @onready var can_act := false
 
 var selected_piece: PlayerPiece
@@ -35,3 +37,4 @@ func _unselect_piece():
 func _on_moved():
 	can_act = false
 	_unselect_piece()
+	turn_end.emit(G.Player.WHITE)

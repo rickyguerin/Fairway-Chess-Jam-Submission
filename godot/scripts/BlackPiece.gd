@@ -8,7 +8,6 @@ const SELECTED_MATERIAL := preload("res://assets/materials/selected.tres")
 
 @export var max_impulse := 24.0
 @export var impulse_direction := Vector3(0, 0, -1)
-@export var max_angle := 10.0
 @export var allowed_directions: Array[float] = [0, -45, -90, -135, 180, 135, 90, 45]
 
 @onready var is_selected := false
@@ -41,14 +40,3 @@ func unselect():
 
 func _on_body_entered(info):
 	pass
-
-
-func _should_clamp(value: float, base_angle: float) -> bool:
-	if value >= base_angle - max_angle and value <= base_angle + max_angle:
-		return false
-
-	if base_angle == 180:
-		if value >= -base_angle - max_angle and value <= -base_angle + max_angle:
-			return false
-
-	return true

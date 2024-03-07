@@ -11,6 +11,7 @@ func _ready():
 	for node in get_tree().get_nodes_in_group("WhitePieces"):
 		node.connect("clicked", _select_piece)
 		node.connect("moved", _on_moved)
+		node.connect("capture", _on_capture)
 
 
 func _on_turn_start(player: G.Player):
@@ -38,3 +39,8 @@ func _on_moved():
 	can_act = false
 	_unselect_piece()
 	turn_end.emit(G.Player.WHITE)
+
+
+func _on_capture(attacker: WhitePiece, defender: BlackPiece):
+	if defender.name == "King":
+		get_tree().change_scene_to_file("res://scenes/Victory.tscn")

@@ -3,7 +3,7 @@ class_name WhitePiece
 
 signal clicked(node)
 signal moved
-signal capture
+signal capture(attacker, defender)
 
 const ROTATION_SPEED := 0.02
 const SELECTED_MATERIAL := preload("res://assets/materials/selected.tres")
@@ -106,12 +106,8 @@ func _on_mouse_exited():
 
 
 func _on_body_entered(info):
-	if not is_selected:
-		return
-
 	if (info.get_collision_layer() == 1):
-		info.queue_free()
-		emit_signal("capture")
+		emit_signal("capture", self, info)
 
 
 func _should_clamp(value: float, base_angle: float) -> bool:

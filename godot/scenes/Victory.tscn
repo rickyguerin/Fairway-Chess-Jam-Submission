@@ -1,0 +1,36 @@
+[gd_scene load_steps=5 format=3 uid="uid://bupn8gk0l38nr"]
+
+[ext_resource type="PackedScene" uid="uid://dmkvcps1nimot" path="res://scenes/board.tscn" id="1_jcd3l"]
+[ext_resource type="PackedScene" uid="uid://bjwril5nfffns" path="res://scenes/pieces/white/WhiteKing.tscn" id="2_r0vs5"]
+[ext_resource type="PackedScene" uid="uid://dd5q620sr0kfv" path="res://scenes/pieces/black/BlackKing.tscn" id="3_he6qk"]
+
+[sub_resource type="Environment" id="Environment_qadqw"]
+background_mode = 1
+background_color = Color(0.352941, 0.647059, 1, 1)
+ambient_light_source = 2
+ambient_light_color = Color(0.784314, 0.784314, 0.784314, 1)
+tonemap_mode = 2
+glow_enabled = true
+
+[node name="Victory" type="Node"]
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 0.866025, 0.5, 0, -0.5, 0.866025, 0, 7.89174, 0)
+sky_mode = 1
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="."]
+environment = SubResource("Environment_qadqw")
+
+[node name="Camera3D" type="Camera3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 0.965926, 0.258819, 0, -0.258819, 0.965926, 0, 3, 5)
+
+[node name="board" parent="." instance=ExtResource("1_jcd3l")]
+
+[node name="King" parent="." instance=ExtResource("2_r0vs5")]
+freeze = true
+script = null
+
+[node name="King2" parent="." instance=ExtResource("3_he6qk")]
+transform = Transform3D(0.0253395, 0.85335, 0.520723, 0.999679, -0.0216304, -0.0131991, 2.27688e-08, 0.52089, -0.853624, 1.96672, 0.471912, -3.8478)
+freeze = true
+script = null

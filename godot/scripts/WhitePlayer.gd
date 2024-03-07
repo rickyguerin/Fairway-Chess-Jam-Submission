@@ -22,7 +22,15 @@ func _input(event):
 
 	if Input.is_action_just_pressed("Space"):
 		can_act = false
-		start_swing.emit(G.Player.WHITE)
+		start_swing.emit(self)
+
+
+func swing_accept(power_percent: float):
+	print("ACCEPT " + str(power_percent))
+
+
+func swing_cancel():
+	print("CANCEL")
 
 
 func _on_turn_start(player: G.Player):

@@ -1,9 +1,7 @@
 extends ProgressBar
 
-@onready var is_active := false
-
 var tween: Tween
-var swinging_player := G.Player
+var swinging_player: Node
 
 func _ready():
 	for player in get_tree().get_nodes_in_group("Players"):
@@ -12,21 +10,16 @@ func _ready():
 
 
 func _input(event):
-	if not is_active:
+	if not (tween and tween.is_running()):
 		return
 
 	if Input.is_action_just_pressed("Space"):
-		print(value)
-		is_active = false
 		tween.kill()
+		_on_swing_accept()
 
 
-func _process(delta):
-	pass
-
-
-func _on_start_swing(player: G.Player):
-	is_active = true
+func _on_start_swing(player):
+	swinging_player = player
 
 	tween = create_tween()
 	tween.tween_property(self, "value", 100, 1.0)
@@ -34,5 +27,15 @@ func _on_start_swing(player: G.Player):
 	tween.tween_callback(_on_swing_cancel)
 
 
+func _on_swing_accept():
+	if swinging_player.has_method("swing_accept"):
+		swinging_player.swing_accept(value)
+
+	swinging_player = null
+
+
 func _on_swing_cancel():
-	print("CANCEL")
+	if swinging_player.has_method("swing_cancel"):
+		swinging_player.swing_cancel()
+
+	swinging_player = null

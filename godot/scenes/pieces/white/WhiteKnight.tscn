@@ -1,7 +1,7 @@
 [gd_scene load_steps=6 format=3 uid="uid://cjfgc8v7obay7"]
 
 [ext_resource type="PackedScene" uid="uid://b24ani7d2u0uy" path="res://assets/models/pieces/Knight.glb" id="1_qvwv5"]
-[ext_resource type="Script" path="res://scripts/PlayerPiece.gd" id="2_dtsba"]
+[ext_resource type="Script" path="res://scripts/WhitePiece.gd" id="2_b7qdp"]
 [ext_resource type="Material" uid="uid://b8w3ll74nwjm5" path="res://assets/materials/White.tres" id="2_kf7ml"]
 [ext_resource type="PackedScene" uid="uid://d17ovg3me6v5e" path="res://scenes/pieces/Arrow.tscn" id="3_a0hh4"]
 
@@ -15,7 +15,7 @@ max_contacts_reported = 1
 contact_monitor = true
 can_sleep = false
 lock_rotation = true
-script = ExtResource("2_dtsba")
+script = ExtResource("2_b7qdp")
 max_impulse = 10.0
 impulse_direction = Vector3(0, 4, -1)
 

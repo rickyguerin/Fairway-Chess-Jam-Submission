@@ -4,7 +4,7 @@ signal turn_end(player)
 
 @onready var can_act := false
 
-var selected_piece: PlayerPiece
+var selected_piece: WhitePiece
 
 func _ready():
 	get_tree().root.get_child(0).connect("turn_start", _on_turn_start)
@@ -21,7 +21,7 @@ func _on_turn_start(player: G.Player):
 
 
 func _select_piece(node):
-	if node is PlayerPiece and node != selected_piece and can_act:
+	if node is WhitePiece and node != selected_piece and can_act:
 		_unselect_piece()
 		node.select()
 		selected_piece = node

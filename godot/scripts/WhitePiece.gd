@@ -1,5 +1,5 @@
 extends RigidBody3D
-class_name PlayerPiece
+class_name WhitePiece
 
 signal clicked(node)
 signal moved

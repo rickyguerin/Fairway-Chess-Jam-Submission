@@ -1,7 +1,7 @@
 [gd_scene load_steps=6 format=3 uid="uid://bv1ixjptpruna"]
 
 [ext_resource type="PackedScene" uid="uid://bqpgj4o4p4u2p" path="res://assets/models/pieces/Pawn.glb" id="1_hm2bo"]
-[ext_resource type="Script" path="res://scripts/PlayerPiece.gd" id="2_qku0v"]
+[ext_resource type="Script" path="res://scripts/WhitePiece.gd" id="2_gm4j7"]
 [ext_resource type="Material" uid="uid://b8w3ll74nwjm5" path="res://assets/materials/White.tres" id="3_5uete"]
 [ext_resource type="PackedScene" uid="uid://d17ovg3me6v5e" path="res://scenes/pieces/Arrow.tscn" id="4_1tfh5"]
 
@@ -15,7 +15,7 @@ max_contacts_reported = 1
 contact_monitor = true
 can_sleep = false
 lock_rotation = true
-script = ExtResource("2_qku0v")
+script = ExtResource("2_gm4j7")
 max_impulse = 8.0
 max_angle = 45.0
 allowed_directions = Array[float]([0.0])

@@ -1,8 +1,8 @@
 [gd_scene load_steps=6 format=3 uid="uid://1d0c7cd2ktqb"]
 
 [ext_resource type="PackedScene" uid="uid://uax6wmorrsvh" path="res://assets/models/pieces/Queen.glb" id="1_8o6m6"]
+[ext_resource type="Script" path="res://scripts/WhitePiece.gd" id="2_cdpre"]
 [ext_resource type="Material" uid="uid://b8w3ll74nwjm5" path="res://assets/materials/White.tres" id="2_mbpr1"]
-[ext_resource type="Script" path="res://scripts/PlayerPiece.gd" id="2_ou88q"]
 [ext_resource type="PackedScene" uid="uid://d17ovg3me6v5e" path="res://scenes/pieces/Arrow.tscn" id="3_yfy3v"]
 
 [sub_resource type="ConvexPolygonShape3D" id="ConvexPolygonShape3D_bcuqn"]
@@ -15,7 +15,7 @@ max_contacts_reported = 1
 contact_monitor = true
 can_sleep = false
 lock_rotation = true
-script = ExtResource("2_ou88q")
+script = ExtResource("2_cdpre")
 
 [node name="Mesh" parent="." index="0"]
 surface_material_override/0 = ExtResource("2_mbpr1")

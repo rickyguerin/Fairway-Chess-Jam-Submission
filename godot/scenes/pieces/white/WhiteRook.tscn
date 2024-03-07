@@ -1,7 +1,7 @@
 [gd_scene load_steps=6 format=3 uid="uid://bul70oj43vfih"]
 
 [ext_resource type="PackedScene" uid="uid://bnsretic8f3eg" path="res://assets/models/pieces/Rook.glb" id="1_en4i8"]
-[ext_resource type="Script" path="res://scripts/PlayerPiece.gd" id="2_64irf"]
+[ext_resource type="Script" path="res://scripts/WhitePiece.gd" id="2_nlnbb"]
 [ext_resource type="Material" uid="uid://b8w3ll74nwjm5" path="res://assets/materials/White.tres" id="2_xymww"]
 [ext_resource type="PackedScene" uid="uid://d17ovg3me6v5e" path="res://scenes/pieces/Arrow.tscn" id="4_604kh"]
 
@@ -15,7 +15,7 @@ max_contacts_reported = 1
 contact_monitor = true
 can_sleep = false
 lock_rotation = true
-script = ExtResource("2_64irf")
+script = ExtResource("2_nlnbb")
 allowed_directions = Array[float]([0.0, -90.0, 180.0, 90.0])
 
 [node name="Mesh" parent="." index="0"]

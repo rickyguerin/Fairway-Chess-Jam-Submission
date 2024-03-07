@@ -1,5 +1,7 @@
 extends Node
 
+signal select
+signal unselect
 signal turn_end(player)
 
 @onready var can_act := false
@@ -22,17 +24,21 @@ func _on_turn_start(player: G.Player):
 
 
 func _select_piece(node):
-	if node is WhitePiece and can_act:
+	if not node:
+		_unselect_piece()
+
+	elif node is WhitePiece and can_act:
 		_unselect_piece()
 		node.select()
 		selected_piece = node
+		select.emit()
 
 
 func _unselect_piece():
 	if selected_piece:
 		selected_piece.unselect()
-
-	selected_piece = null
+		selected_piece = null
+		unselect.emit()
 
 
 func _on_moved():

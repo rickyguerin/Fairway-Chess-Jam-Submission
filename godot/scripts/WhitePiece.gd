@@ -27,10 +27,12 @@ func _ready():
 
 
 func _input(event):
-	if mouse_is_hovering and event is InputEventMouseButton:
-		if event.button_index == MOUSE_BUTTON_LEFT and event.is_pressed():
+	if event is InputEventMouseButton and event.is_pressed() \
+	and event.button_index == MOUSE_BUTTON_LEFT:
+		if mouse_is_hovering:
 			clicked.emit(self)
-			return
+		elif is_selected:
+			unselect()
 
 	if not is_selected:
 		return

@@ -22,7 +22,7 @@ func _on_turn_start(player: G.Player):
 
 
 func _select_piece(node):
-	if node is WhitePiece and node != selected_piece and can_act:
+	if node is WhitePiece and can_act:
 		_unselect_piece()
 		node.select()
 		selected_piece = node

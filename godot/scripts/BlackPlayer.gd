@@ -16,17 +16,17 @@ func _on_turn_start(player: G.Player):
 		return
 
 	var piece: BlackPiece = pieces.pick_random()
-	await get_tree().create_timer(2.0).timeout
+	await get_tree().create_timer(1.0).timeout
 
 	piece.select()
-	await get_tree().create_timer(2.0).timeout
+	await get_tree().create_timer(1.0).timeout
 
 	piece.can_rotate = true
-	await get_tree().create_timer(2.0).timeout
+	await get_tree().create_timer(1.0).timeout
 
 	var d = (piece.transform.basis * piece.impulse_direction).normalized()
 	piece.apply_impulse(d * piece.max_impulse)
-	await get_tree().create_timer(2.0).timeout
+	await get_tree().create_timer(1.0).timeout
 
 	piece.unselect()
 	_end_turn()

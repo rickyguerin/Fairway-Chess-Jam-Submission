@@ -1,4 +1,4 @@
-[gd_scene load_steps=25 format=3 uid="uid://4yetqslefb6c"]
+[gd_scene load_steps=26 format=3 uid="uid://4yetqslefb6c"]
 
 [ext_resource type="Script" path="res://scripts/game.gd" id="1_1yvmv"]
 [ext_resource type="PackedScene" uid="uid://dmkvcps1nimot" path="res://scenes/board.tscn" id="1_v7mcm"]
@@ -17,6 +17,7 @@
 [ext_resource type="PackedScene" uid="uid://dd5q620sr0kfv" path="res://scenes/pieces/black/BlackKing.tscn" id="12_ci14r"]
 [ext_resource type="Script" path="res://scripts/WhitePlayer.gd" id="16_r14d2"]
 [ext_resource type="Script" path="res://scripts/BlackPlayer.gd" id="17_xpwyu"]
+[ext_resource type="Script" path="res://scripts/PowerMeter.gd" id="18_m4pra"]
 
 [sub_resource type="Environment" id="Environment_8k3b6"]
 background_mode = 1
@@ -243,3 +244,4 @@ horizontal_alignment = 1
 [node name="ProgressBar" type="ProgressBar" parent="PowerMeterUI/Margin/VBox"]
 layout_mode = 2
 size_flags_vertical = 1
+script = ExtResource("18_m4pra")

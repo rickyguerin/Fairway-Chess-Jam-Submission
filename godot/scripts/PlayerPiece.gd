@@ -106,6 +106,9 @@ func _on_mouse_exited():
 
 
 func _on_body_entered(info):
+	if not is_selected:
+		return
+
 	if (info.get_collision_layer() == 1):
 		info.queue_free()
 		emit_signal("capture")

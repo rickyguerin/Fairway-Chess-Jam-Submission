@@ -2,7 +2,6 @@ extends RigidBody3D
 class_name WhitePiece
 
 signal clicked(node)
-signal moved
 signal capture(attacker, defender)
 
 const ROTATION_SPEED := 0.02
@@ -33,14 +32,6 @@ func _input(event):
 			clicked.emit(self)
 		elif is_selected:
 			clicked.emit(null)
-
-	if not is_selected:
-		return
-
-	if Input.is_action_just_pressed("Space"):
-		var d = (transform.basis * impulse_direction).normalized()
-		apply_impulse(d * max_impulse)
-		moved.emit()
 
 
 func _process(delta):
@@ -97,6 +88,11 @@ func unselect():
 	$Mesh.material_override = null
 	$Arrow.visible = false
 	is_selected = false
+
+
+func swing():
+	var d = (transform.basis * impulse_direction).normalized()
+	apply_impulse(d * max_impulse)
 
 
 func _on_mouse_entered():

@@ -2,6 +2,7 @@ extends Node
 
 signal select
 signal unselect
+signal start_swing(player)
 signal turn_end(player)
 
 @onready var can_act := false
@@ -12,8 +13,16 @@ func _ready():
 	get_tree().root.get_child(0).connect("turn_start", _on_turn_start)
 	for node in get_tree().get_nodes_in_group("WhitePieces"):
 		node.connect("clicked", _select_piece)
-		node.connect("moved", _on_moved)
 		node.connect("capture", _on_capture)
+
+
+func _input(event):
+	if not selected_piece:
+		return
+
+	if Input.is_action_just_pressed("Space"):
+		start_swing.emit(G.Player.WHITE)
+		selected_piece.swing()
 
 
 func _on_turn_start(player: G.Player):

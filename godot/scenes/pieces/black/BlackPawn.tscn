@@ -12,6 +12,8 @@ points = PackedVector3Array(-0.5, 0, 0, -0.433046, 0, -0.25, -0.433046, 0, 0.249
 can_sleep = false
 lock_rotation = true
 script = ExtResource("2_0130r")
+max_impulse = 8.0
+allowed_directions = Array[float]([180.0])
 
 [node name="Mesh" parent="." index="0"]
 surface_material_override/0 = ExtResource("2_yshjn")

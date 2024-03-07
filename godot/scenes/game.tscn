@@ -212,10 +212,10 @@ transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, -1, 0,
 [node name="King" parent="Black Pieces" groups=["BlackPieces"] instance=ExtResource("12_ci14r")]
 transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 1, 0, -7)
 
-[node name="WhitePlayer" type="Node" parent="."]
+[node name="WhitePlayer" type="Node" parent="." groups=["Players"]]
 script = ExtResource("16_r14d2")
 
-[node name="BlackPlayer" type="Node" parent="."]
+[node name="BlackPlayer" type="Node" parent="." groups=["Players"]]
 script = ExtResource("17_xpwyu")
 
 [node name="PowerMeterUI" type="CanvasLayer" parent="."]

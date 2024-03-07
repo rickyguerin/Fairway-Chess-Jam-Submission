@@ -32,7 +32,7 @@ func _input(event):
 		if mouse_is_hovering:
 			clicked.emit(self)
 		elif is_selected:
-			unselect()
+			clicked.emit(null)
 
 	if not is_selected:
 		return

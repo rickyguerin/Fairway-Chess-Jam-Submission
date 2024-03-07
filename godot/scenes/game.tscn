@@ -217,3 +217,29 @@ script = ExtResource("16_r14d2")
 
 [node name="BlackPlayer" type="Node" parent="."]
 script = ExtResource("17_xpwyu")
+
+[node name="PowerMeterUI" type="CanvasLayer" parent="."]
+visible = false
+
+[node name="Margin" type="MarginContainer" parent="PowerMeterUI"]
+anchors_preset = 10
+anchor_right = 1.0
+offset_bottom = 97.0
+grow_horizontal = 2
+theme_override_constants/margin_left = 50
+theme_override_constants/margin_right = 50
+theme_override_constants/margin_bottom = 20
+
+[node name="VBox" type="VBoxContainer" parent="PowerMeterUI/Margin"]
+layout_mode = 2
+alignment = 1
+
+[node name="Label" type="Label" parent="PowerMeterUI/Margin/VBox"]
+layout_mode = 2
+size_flags_vertical = 1
+text = "POWER"
+horizontal_alignment = 1
+
+[node name="ProgressBar" type="ProgressBar" parent="PowerMeterUI/Margin/VBox"]
+layout_mode = 2
+size_flags_vertical = 1

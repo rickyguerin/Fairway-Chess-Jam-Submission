@@ -17,12 +17,12 @@ func _ready():
 
 
 func _input(event):
-	if not selected_piece:
+	if not (selected_piece and can_act):
 		return
 
 	if Input.is_action_just_pressed("Space"):
+		can_act = false
 		start_swing.emit(G.Player.WHITE)
-		selected_piece.swing()
 
 
 func _on_turn_start(player: G.Player):

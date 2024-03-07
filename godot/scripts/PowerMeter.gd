@@ -12,4 +12,7 @@ func _process(delta):
 
 
 func _on_start_swing(player: G.Player):
-	pass
+	var tween = create_tween()
+
+	tween.tween_property(self, "value", 100, 1.0)
+	tween.tween_property(self, "value", 0, 1.0)

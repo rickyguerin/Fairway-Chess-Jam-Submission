@@ -28,6 +28,8 @@ func _input(event):
 func swing_accept(power_percent: float):
 	can_act = false
 	selected_piece.swing(power_percent)
+	$Putt.pitch_scale = randf_range(0.8, 1.2)
+	$Putt.play()
 	_unselect_piece()
 	turn_end.emit(G.Player.WHITE)
 

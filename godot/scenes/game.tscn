@@ -1,4 +1,4 @@
-[gd_scene load_steps=28 format=3 uid="uid://4yetqslefb6c"]
+[gd_scene load_steps=29 format=3 uid="uid://4yetqslefb6c"]
 
 [ext_resource type="Script" path="res://scripts/game.gd" id="1_1yvmv"]
 [ext_resource type="PackedScene" uid="uid://dmkvcps1nimot" path="res://scenes/board.tscn" id="1_v7mcm"]
@@ -16,6 +16,7 @@
 [ext_resource type="PackedScene" uid="uid://2nqfd11owwp1" path="res://scenes/pieces/black/BlackKnight.tscn" id="11_wxxrq"]
 [ext_resource type="PackedScene" uid="uid://dd5q620sr0kfv" path="res://scenes/pieces/black/BlackKing.tscn" id="12_ci14r"]
 [ext_resource type="Script" path="res://scripts/WhitePlayer.gd" id="16_r14d2"]
+[ext_resource type="AudioStream" uid="uid://hjvha2hh38nh" path="res://assets/audio/putt.wav" id="17_nep3w"]
 [ext_resource type="Script" path="res://scripts/BlackPlayer.gd" id="17_xpwyu"]
 [ext_resource type="Script" path="res://scripts/PowerMeter.gd" id="18_m4pra"]
 [ext_resource type="AudioStream" uid="uid://d05lljsutps0k" path="res://assets/audio/wind_loop.wav" id="19_843bl"]
@@ -218,8 +219,15 @@ transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 1, 0, 
 [node name="WhitePlayer" type="Node" parent="." groups=["Players"]]
 script = ExtResource("16_r14d2")
 
+[node name="Putt" type="AudioStreamPlayer" parent="WhitePlayer"]
+stream = ExtResource("17_nep3w")
+volume_db = -10.0
+
 [node name="BlackPlayer" type="Node" parent="." groups=["Players"]]
 script = ExtResource("17_xpwyu")
+
+[node name="Putt" type="AudioStreamPlayer" parent="BlackPlayer"]
+stream = ExtResource("17_nep3w")
 
 [node name="PowerMeterUI" type="CanvasLayer" parent="."]
 visible = false

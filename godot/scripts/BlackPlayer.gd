@@ -26,6 +26,8 @@ func _on_turn_start(player: G.Player):
 
 	var d = (piece.transform.basis * piece.impulse_direction).normalized()
 	piece.apply_impulse(d * piece.max_impulse)
+	$Putt.pitch_scale = randf_range(0.8, 1.2)
+	$Putt.play()
 	await get_tree().create_timer(1.0).timeout
 
 	piece.unselect()

@@ -16,8 +16,8 @@ const SELECTED_MATERIAL := preload("res://assets/materials/selected.tres")
 @onready var mouse_is_hovering := false
 @onready var is_selected := false
 @onready var reset_rotation := false
-
-var rotation_direction := 0
+@onready var rotation_direction := 0
+@onready var can_capture := false
 
 func _ready():
 	connect("mouse_entered", _on_mouse_entered)
@@ -91,8 +91,11 @@ func unselect():
 
 
 func swing(power_percent: float):
+	can_capture = true
 	var d = (transform.basis * impulse_direction).normalized()
 	apply_impulse(d * max_impulse * (power_percent / 100.0))
+	await get_tree().create_timer(2.0).timeout
+	can_capture = false
 
 
 func _on_mouse_entered():
@@ -104,7 +107,7 @@ func _on_mouse_exited():
 
 
 func _on_body_entered(info):
-	if (info.get_collision_layer() == 1):
+	if can_capture and (info.get_collision_layer() == 1):
 		emit_signal("capture", self, info)
 
 

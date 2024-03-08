@@ -54,7 +54,7 @@ func _integrate_forces(state):
 	if reset_rotation:
 		reset_rotation = false
 		direction_index = 0
-		trans.basis = trans.basis.from_euler(Vector3())
+		trans.basis = trans.basis.from_euler(Vector3(0, deg_to_rad(allowed_directions[direction_index]), 0))
 
 	elif Input.is_action_just_pressed("Q"):
 		direction_index -= 1

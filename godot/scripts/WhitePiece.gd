@@ -110,6 +110,10 @@ func _on_body_entered(info):
 	if can_capture and (info.get_collision_layer() == 1):
 		emit_signal("capture", self, info)
 
+		# Freeze and unfreeze to stop motion after first capture
+		freeze = true
+		freeze = false
+
 
 func _should_clamp(value: float, base_angle: float) -> bool:
 	if value >= base_angle - max_angle and value <= base_angle + max_angle:

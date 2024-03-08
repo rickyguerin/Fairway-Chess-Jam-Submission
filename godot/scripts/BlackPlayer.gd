@@ -12,12 +12,10 @@ func _on_turn_start(player: G.Player):
 	if not player == G.Player.BLACK:
 		return
 
+	await get_tree().create_timer(4.0).timeout
 	var piece: BlackPiece = get_tree().get_nodes_in_group("BlackPieces").pick_random()
-	await get_tree().create_timer(1.0).timeout
 
 	piece.select()
-	await get_tree().create_timer(1.0).timeout
-
 	piece.can_rotate = true
 	await get_tree().create_timer(1.0).timeout
 

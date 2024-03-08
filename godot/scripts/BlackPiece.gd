@@ -13,6 +13,7 @@ const SELECTED_MATERIAL := preload("res://assets/materials/selected.tres")
 
 @onready var can_rotate := false
 @onready var can_capture := false
+@onready var attack_angle := 0.0
 
 
 func _ready():
@@ -26,7 +27,7 @@ func _integrate_forces(state):
 	can_rotate = false
 
 	var trans = state.get_transform()
-	trans.basis = trans.basis.from_euler(Vector3(0, deg_to_rad(allowed_directions.pick_random()), 0))
+	trans.basis = trans.basis.from_euler(Vector3(0, deg_to_rad(attack_angle), 0))
 	state.set_transform(trans)
 
 

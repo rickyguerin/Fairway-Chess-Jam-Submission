@@ -66,3 +66,5 @@ func _unselect_piece():
 func _on_capture(attacker: WhitePiece, defender: BlackPiece):
 	if defender.name == "King":
 		get_tree().change_scene_to_file("res://scenes/Victory.tscn")
+
+	defender.queue_free()

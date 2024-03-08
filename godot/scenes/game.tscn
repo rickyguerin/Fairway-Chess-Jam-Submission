@@ -248,7 +248,7 @@ layout_mode = 2
 size_flags_vertical = 1
 script = ExtResource("18_m4pra")
 
-[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+[node name="WindAudio" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("19_843bl")
 volume_db = -36.0
 autoplay = true

@@ -1,4 +1,4 @@
-[gd_scene load_steps=29 format=3 uid="uid://4yetqslefb6c"]
+[gd_scene load_steps=30 format=3 uid="uid://4yetqslefb6c"]
 
 [ext_resource type="Script" path="res://scripts/game.gd" id="1_1yvmv"]
 [ext_resource type="PackedScene" uid="uid://dmkvcps1nimot" path="res://scenes/board.tscn" id="1_v7mcm"]
@@ -47,6 +47,13 @@ size = Vector3(16, 2, 16)
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_tvm3r"]
 size = Vector3(16, 2, 16)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_1v3sc"]
+bg_color = Color(1, 0, 0, 1)
+corner_radius_top_left = 6
+corner_radius_top_right = 6
+corner_radius_bottom_right = 6
+corner_radius_bottom_left = 6
 
 [node name="World" type="Node"]
 script = ExtResource("1_1yvmv")
@@ -254,6 +261,7 @@ horizontal_alignment = 1
 [node name="ProgressBar" type="ProgressBar" parent="PowerMeterUI/Margin/VBox"]
 layout_mode = 2
 size_flags_vertical = 1
+theme_override_styles/fill = SubResource("StyleBoxFlat_1v3sc")
 script = ExtResource("18_m4pra")
 
 [node name="WindAudio" type="AudioStreamPlayer" parent="."]

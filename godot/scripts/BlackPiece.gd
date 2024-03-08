@@ -11,6 +11,7 @@ const SELECTED_MATERIAL := preload("res://assets/materials/selected.tres")
 @export var allowed_directions: Array[float] = [0, -45, -90, -135, 180, 135, 90, 45]
 
 @onready var can_rotate := false
+@onready var can_capture := false
 
 
 func _ready():
@@ -39,4 +40,10 @@ func unselect():
 
 
 func _on_body_entered(info):
-	pass
+	if can_capture and (info.get_collision_layer() == 3):
+		can_capture = false
+		emit_signal("capture", self, info)
+
+		# Freeze and unfreeze to stop motion after first capture
+		freeze = true
+		freeze = false

@@ -3,16 +3,16 @@ class_name G
 enum Player {WHITE, BLACK}
 
 
-func can_attack(attacker, defender) -> bool:
+static func can_attack(attacker, defender):
 	for angle in attacker.allowed_directions:
 		var tri := get_triangle_points(attacker, angle)
 		if point_is_in_triangle(defender.position, tri[0], tri[1], tri[2]):
-			return true
+			return angle
 
 	return false
 
 
-func get_triangle_points(attacker, angle) -> Array[Vector3]:
+static func get_triangle_points(attacker, angle) -> Array[Vector3]:
 	var points: Array[Vector3] = [attacker.position]
 
 	var minus_dir = Vector3.FORWARD.rotated(Vector3.UP, deg_to_rad(angle - attacker.max_angle)).normalized()
@@ -24,7 +24,7 @@ func get_triangle_points(attacker, angle) -> Array[Vector3]:
 	return points
 
 
-func point_is_in_triangle(p: Vector3, a: Vector3, b: Vector3, c: Vector3) -> bool:
+static func point_is_in_triangle(p: Vector3, a: Vector3, b: Vector3, c: Vector3) -> bool:
 	var bdx := b.x - a.x
 	var bdz := b.z - a.z
 	var cdx := c.x - a.x

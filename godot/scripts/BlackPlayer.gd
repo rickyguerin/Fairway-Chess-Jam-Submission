@@ -2,12 +2,7 @@ extends Node
 
 signal turn_end(player)
 
-@onready var pieces: Array[BlackPiece] = []
-
 func _ready():
-	for node in get_tree().get_nodes_in_group("BlackPieces"):
-		pieces.append(node)
-
 	get_tree().root.get_child(0).connect("turn_start", _on_turn_start)
 
 
@@ -15,7 +10,7 @@ func _on_turn_start(player: G.Player):
 	if not player == G.Player.BLACK:
 		return
 
-	var piece: BlackPiece = pieces.pick_random()
+	var piece: BlackPiece = get_tree().get_nodes_in_group("BlackPieces").pick_random()
 	await get_tree().create_timer(1.0).timeout
 
 	piece.select()

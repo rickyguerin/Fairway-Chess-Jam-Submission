@@ -30,7 +30,7 @@ func swing_accept(power_percent: float):
 
 
 func swing_cancel():
-	print("CANCEL")
+	can_act = true
 
 
 func _on_turn_start(player: G.Player):

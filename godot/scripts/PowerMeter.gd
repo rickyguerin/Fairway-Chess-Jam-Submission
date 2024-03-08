@@ -13,6 +13,12 @@ func _input(event):
 	if not (tween and tween.is_running()):
 		return
 
+	if event is InputEventMouseButton and event.is_pressed() \
+	and event.button_index == MOUSE_BUTTON_LEFT:
+		tween.kill()
+		value = 0
+		_on_swing_cancel()
+
 	if Input.is_action_just_pressed("Space"):
 		tween.kill()
 		_on_swing_accept()

@@ -228,7 +228,6 @@ script = ExtResource("16_r14d2")
 
 [node name="Putt" type="AudioStreamPlayer" parent="WhitePlayer"]
 stream = ExtResource("17_nep3w")
-volume_db = -10.0
 
 [node name="BlackPlayer" type="Node" parent="." groups=["Players"]]
 script = ExtResource("17_xpwyu")

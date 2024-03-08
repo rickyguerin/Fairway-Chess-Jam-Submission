@@ -108,6 +108,7 @@ func _on_mouse_exited():
 
 func _on_body_entered(info):
 	if can_capture and (info.get_collision_layer() == 1):
+		can_capture = false
 		emit_signal("capture", self, info)
 
 		# Freeze and unfreeze to stop motion after first capture

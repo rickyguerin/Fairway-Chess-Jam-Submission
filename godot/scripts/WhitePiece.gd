@@ -90,9 +90,9 @@ func unselect():
 	is_selected = false
 
 
-func swing():
+func swing(power_percent: float):
 	var d = (transform.basis * impulse_direction).normalized()
-	apply_impulse(d * max_impulse)
+	apply_impulse(d * max_impulse * (power_percent / 100.0))
 
 
 func _on_mouse_entered():

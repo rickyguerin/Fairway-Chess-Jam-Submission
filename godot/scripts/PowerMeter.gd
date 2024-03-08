@@ -16,7 +16,6 @@ func _input(event):
 	if event is InputEventMouseButton and event.is_pressed() \
 	and event.button_index == MOUSE_BUTTON_LEFT:
 		tween.kill()
-		value = 0
 		_on_swing_cancel()
 
 	if Input.is_action_just_pressed("Space"):
@@ -38,6 +37,7 @@ func _on_swing_accept():
 		swinging_player.swing_accept(value)
 
 	swinging_player = null
+	value = 0
 
 
 func _on_swing_cancel():
@@ -45,3 +45,4 @@ func _on_swing_cancel():
 		swinging_player.swing_cancel()
 
 	swinging_player = null
+	value = 0

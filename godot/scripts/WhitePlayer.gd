@@ -26,7 +26,10 @@ func _input(event):
 
 
 func swing_accept(power_percent: float):
-	print("ACCEPT " + str(power_percent))
+	can_act = false
+	selected_piece.swing(power_percent)
+	_unselect_piece()
+	turn_end.emit(G.Player.WHITE)
 
 
 func swing_cancel():
@@ -56,12 +59,6 @@ func _unselect_piece():
 		selected_piece.unselect()
 		selected_piece = null
 		unselect.emit()
-
-
-func _on_moved():
-	can_act = false
-	_unselect_piece()
-	turn_end.emit(G.Player.WHITE)
 
 
 func _on_capture(attacker: WhitePiece, defender: BlackPiece):

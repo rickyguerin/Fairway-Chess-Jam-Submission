@@ -16,7 +16,7 @@ contact_monitor = true
 can_sleep = false
 lock_rotation = true
 script = ExtResource("2_gm4j7")
-max_impulse = 10.0
+max_impulse = 9.0
 max_angle = 30.0
 allowed_directions = Array[float]([0.0])
 

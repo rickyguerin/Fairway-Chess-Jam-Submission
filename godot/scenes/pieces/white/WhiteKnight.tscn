@@ -16,7 +16,7 @@ contact_monitor = true
 can_sleep = false
 lock_rotation = true
 script = ExtResource("2_b7qdp")
-max_impulse = 10.0
+max_impulse = 12.0
 impulse_direction = Vector3(0, 4, -1)
 
 [node name="Mesh" parent="." index="0"]

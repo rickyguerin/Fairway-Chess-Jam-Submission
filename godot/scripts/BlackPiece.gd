@@ -6,7 +6,7 @@ signal capture
 
 const SELECTED_MATERIAL := preload("res://assets/materials/selected.tres")
 
-@export var max_impulse := 24.0
+@export var max_impulse := 16.0
 @export var max_angle := 10.0
 @export var impulse_direction := Vector3(0, 0, -1)
 @export var allowed_directions: Array[float] = [180, 135, 90, 45, 0, -45, -90, -135]

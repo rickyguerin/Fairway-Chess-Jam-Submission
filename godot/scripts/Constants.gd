@@ -3,6 +3,23 @@ class_name G
 enum Player {WHITE, BLACK}
 
 
+static func piece_value(piece) -> int:
+	if piece.name.begins_with("King"):
+		return 999
+	if piece.name.begins_with("Queen"):
+		return 9
+	if piece.name.begins_with("Rook"):
+		return 5
+	if piece.name.begins_with("Bishop"):
+		return 3
+	if piece.name.begins_with("Knight"):
+		return 3
+	if piece.name.begins_with("Pawn"):
+		return 1
+
+	return 0
+
+
 static func can_attack(attacker, defender):
 	for angle in attacker.allowed_directions:
 		var tri := get_triangle_points(attacker, angle)

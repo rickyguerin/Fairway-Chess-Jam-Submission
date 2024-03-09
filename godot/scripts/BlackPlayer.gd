@@ -99,7 +99,12 @@ func _pick_piece_to_move():
 			if white_attacker_names.has(piece.name):
 				targets.append(piece.name)
 				black_attacker_names.append(key)
-				
+
+	if len(targets) == 0:
+		_attack_piece = get_tree().get_nodes_in_group("BlackPieces").pick_random()
+		_attack_piece.attack_angle = _attack_piece.allowed_directions[0]
+		return
+
 	var target = _closest_to_king(targets)
 	var attacker = _closest_to_target(target, black_attacker_names)
 

@@ -80,7 +80,18 @@ func _pick_piece_to_move():
 				white_attacker_names.append(key)
 
 	if len(white_attacker_names) == 0:
+		if len(black_attacks.keys()) > 0:
+			_most_valuable_capture(black_attacks)
+
+		else:
+			_attack_piece = get_tree().get_nodes_in_group("BlackPieces").pick_random()
+			_attack_piece.attack_angle = _attack_piece.allowed_directions.pick_random()
+
+		return
+		
+	if len(black_attacks.keys()) == 0:
 		_attack_piece = get_tree().get_nodes_in_group("BlackPieces").pick_random()
+		_attack_piece.attack_angle = _attack_piece.allowed_directions.pick_random()
 		return
 
 	for key in black_attacks.keys():
@@ -113,7 +124,7 @@ func _closest_to_king(names: Array) -> String:
 			closest_distance = distance
 			closest_piece = white_piece
 
-	return closest_piece.name
+	return closest_piece.name if closest_piece else ""
 
 
 func _closest_to_target(target_name: String, attacker_names: Array) -> String:
@@ -130,3 +141,29 @@ func _closest_to_target(target_name: String, attacker_names: Array) -> String:
 			closest_piece = black_piece
 
 	return closest_piece.name
+
+
+func _most_valuable_capture(black_attacks: Dictionary):
+	var highest_value := 0
+	var attacker_name := ""
+	var attacker_distance := 999
+	var defender_name := ""
+	
+	for key in black_attacks.keys():
+		for piece in black_attacks[key]:
+			var dist = piece.position.distance_to(_black_pieces[key].position)
+			if G.piece_value(piece) > highest_value:
+				highest_value = G.piece_value(piece)
+				attacker_name = key
+				attacker_distance = piece.position.distance_to(_black_pieces[key].position)
+				defender_name = piece.name
+
+			elif G.piece_value(piece) == highest_value:
+				pass
+
+	_attack_piece = _black_pieces[attacker_name]
+	var ang = G.can_attack(_attack_piece, _white_pieces[defender_name])
+	if ang:
+		_attack_piece.attack_angle = ang
+	else:
+		_attack_piece.attack_angle = _attack_piece.allowed_directions[0]

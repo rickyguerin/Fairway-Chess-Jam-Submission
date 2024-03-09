@@ -85,13 +85,13 @@ func _pick_piece_to_move():
 
 		else:
 			_attack_piece = get_tree().get_nodes_in_group("BlackPieces").pick_random()
-			_attack_piece.attack_angle = _attack_piece.allowed_directions.pick_random()
+			_attack_piece.attack_angle = _attack_piece.allowed_directions[0]
 
 		return
-		
+
 	if len(black_attacks.keys()) == 0:
 		_attack_piece = get_tree().get_nodes_in_group("BlackPieces").pick_random()
-		_attack_piece.attack_angle = _attack_piece.allowed_directions.pick_random()
+		_attack_piece.attack_angle = _attack_piece.allowed_directions[0]
 		return
 
 	for key in black_attacks.keys():

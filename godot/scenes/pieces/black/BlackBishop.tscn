@@ -14,7 +14,7 @@ contact_monitor = true
 can_sleep = false
 lock_rotation = true
 script = ExtResource("2_pa6rj")
-allowed_directions = Array[float]([-45.0, -135.0, 135.0, 45.0])
+allowed_directions = Array[float]([135.0, 45.0, -45.0, -135.0])
 
 [node name="Mesh" parent="." index="0"]
 surface_material_override/0 = ExtResource("2_01vxu")
